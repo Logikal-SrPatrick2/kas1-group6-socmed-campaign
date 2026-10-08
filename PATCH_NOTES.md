@@ -18,3 +18,6 @@
 ### PRE-ALPHA v0.2.2
 - testing merge conflict
 
+### PRE-ALPHA v0.2.3
+- changed logo placeholder for the nth time
+
