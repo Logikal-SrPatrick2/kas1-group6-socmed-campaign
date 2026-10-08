@@ -16,7 +16,7 @@ document.addEventListener("DOMContentLoaded", () => {
   const ctaButton = document.getElementById("cta-btn");
   if (ctaButton) {
     ctaButton.addEventListener("click", () => {
-      alert("button is pressed");
+      alert("test test testicle");
     });
   }
 });

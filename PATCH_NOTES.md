@@ -7,3 +7,7 @@
 
 ### PRE-ALPHA v0.1.2
 - emphasized detection of device
+
+### PRE-ALPHA v0.2.0
+- changed the button output
+- changed the logo placeholder
