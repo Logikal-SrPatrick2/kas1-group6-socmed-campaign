@@ -14,3 +14,6 @@
 
 ### PRE-ALPHA v0.2.1
 - testing git push
+
+### PRE-ALPHA v0.2.2
+- testing merge conflict
