@@ -11,3 +11,6 @@
 ### PRE-ALPHA v0.2.0
 - changed the button output
 - changed the logo placeholder
+
+### PRE-ALPHA v0.2.1
+- testing git push
