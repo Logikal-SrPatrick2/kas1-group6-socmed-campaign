@@ -23,3 +23,6 @@
 
 ### PRE-ALPHA v0.2.4
 - Resturctured folder system of the project
+
+### PRE-ALPHA v0.2.5
+- Resturctured again to fix CSS AND JS loading, htmls must be within root folder
