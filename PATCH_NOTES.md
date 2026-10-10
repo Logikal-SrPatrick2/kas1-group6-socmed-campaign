@@ -21,3 +21,5 @@
 ### PRE-ALPHA v0.2.3
 - changed logo placeholder for the nth time
 
+### PRE-ALPHA v0.2.4
+- Resturctured folder system of the project
