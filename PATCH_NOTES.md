@@ -26,3 +26,6 @@
 
 ### PRE-ALPHA v0.2.5
 - Resturctured again to fix CSS AND JS loading, htmls must be within root folder
+
+### PRE-ALPHA v0.2.6
+- Fixed website not loading
