@@ -29,3 +29,6 @@
 
 ### PRE-ALPHA v0.2.6
 - Fixed website not loading
+
+### PRE-ALPHA v0.3.0
+- Audio features testing
