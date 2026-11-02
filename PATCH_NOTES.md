@@ -32,3 +32,6 @@
 
 ### PRE-ALPHA v0.3.0
 - Audio features testing
+
+### PRE-ALPHA v0.4.0
+- Initial implementation of SONG SELECTION PAGE
