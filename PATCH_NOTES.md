@@ -52,3 +52,7 @@
 - Added HOME folder for images.
 - Fixed position of Martial Law.
 - Added Recently Played section (JUST PLACEHOLDERS FOR NOW)
+
+### PRE-ALPHA v0.7.0
+- Added facts bg and placeholder
+- Fixed position of facts
