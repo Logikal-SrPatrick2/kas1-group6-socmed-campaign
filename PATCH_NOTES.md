@@ -35,3 +35,6 @@
 
 ### PRE-ALPHA v0.4.0
 - Initial implementation of SONG SELECTION PAGE
+
+### PRE-ALPHA v0.5.0
+- Extract template from song selection and implement for home page
