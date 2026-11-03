@@ -12,6 +12,7 @@
   --font-ui:"Montserrat",system-ui,sans-serif;
 
   --grid-size:48px;
+  --grid-line:1px;
 }
 *{box-sizing:border-box;margin:0;padding:0}
 html,body{height:100%}
@@ -40,13 +41,97 @@ footer .eye{width:40px;margin-bottom:.4rem}
 footer small{display:block;margin-top:.35rem;font-weight:800}
 
 main{
-  flex:1;position:relative;
+  flex:1 0 auto;
+  position:relative;
   min-height:900px;
-  padding:3rem 0 5rem;
+  padding:1.5rem 1.5rem 3rem;
   overflow-x:clip;
   background:
-    linear-gradient(rgba(0,217,160,.35) 1px,transparent 1px),
-    linear-gradient(90deg,rgba(0,217,160,.35) 1px,transparent 1px),
+    linear-gradient(rgba(0,217,160,.35) var(--grid-line),transparent var(--grid-line)),
+    linear-gradient(90deg,rgba(0,217,160,.35) var(--grid-line),transparent var(--grid-line)),
     var(--black);
   background-size:var(--grid-size) var(--grid-size),var(--grid-size) var(--grid-size),auto;
 }
+
+@media (max-resolution:.99dppx){
+  :root{--grid-line:2px}
+}
+
+.page{
+  width:100%;
+  max-width:2350px;
+  margin:0 auto;
+}
+
+.banner{
+  width:100%;
+}
+.banner img{
+  display:block;
+  width:100%;
+  height:auto;
+}
+
+.hero{
+  display:grid;
+  grid-template-columns:196fr 343fr;
+  gap:1.2%;
+  margin-top:1rem;
+  align-items:stretch;
+}
+.hero img{display:block;width:100%;height:auto}
+
+.intro{
+  position:relative;
+  overflow:hidden;
+  aspect-ratio:1.32 / 1;
+  align-self:center;
+}
+.hero .title{
+  position:absolute;
+  width:263%;
+  max-width:none;
+  left:-71%;
+  top:-42%;
+}
+
+.top{
+  display:grid;
+  grid-template-columns:73fr 266fr;
+  gap:1.2%;
+}
+
+.tiles{
+  display:grid;
+  grid-template-rows:repeat(3,1fr);
+  gap:clamp(2px,.35vw,8px);
+}
+.tile{
+  position:relative;
+  display:block;
+  min-height:0;
+}
+.tile img{
+  position:absolute;
+  inset:0;
+  width:100%;
+  height:100%;
+  object-fit:contain;
+  transition:filter .25s, transform .25s;
+}
+.tile:hover img,
+.tile:focus-visible img{
+  filter:drop-shadow(0 0 12px var(--teal));
+  transform:scale(1.04);
+}
+.tile:focus-visible{outline:none}
+
+.tile:nth-child(3) img{
+  transform:translate(4%,5%) scale(2.1);
+}
+.tile:nth-child(3):hover img,
+.tile:nth-child(3):focus-visible img{
+  transform:translate(4%,5%) scale(2.2);
+}
+
+.educated{display:block}

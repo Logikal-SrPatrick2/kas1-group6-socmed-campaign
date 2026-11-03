@@ -38,3 +38,8 @@
 
 ### PRE-ALPHA v0.5.0
 - Extract template from song selection and implement for home page
+
+### PRE-ALPHA v0.5.1
+- Added top half of home page vectors
+- Add tiles, and link the disc to the song-selection.html
+- Added glow when hovering to the tiles
