@@ -46,3 +46,9 @@
 
 ### PRE-ALPHA v0.5.2
 - Fixed bug on 3rd tile
+
+### PRE-ALPHA v0.6.0
+- Added placeholder for subtitle
+- Added HOME folder for images.
+- Fixed position of Martial Law.
+- Added Recently Played section (JUST PLACEHOLDERS FOR NOW)

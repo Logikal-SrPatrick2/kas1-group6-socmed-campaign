@@ -25,32 +25,77 @@
   <div class="page">
 
     <section class="banner">
-      <img src="./static/img/Marcos-HOME.png" alt="">
+      <img src="./static/img/HOME/Marcos-HOME.png" alt="">
     </section>
 
     <section class="hero">
       <div class="intro">
-        <img class="title" src="./static/img/MartialLaw-HOME.png" alt="Martial Law">
+        <img class="title" src="./static/img/HOME/MartialLaw-HOME.png" alt="Martial Law">
       </div>
 
       <div class="panel">
+
         <div class="top">
           <div class="tiles">
             <a class="tile" href="./song-selection.html" aria-label="Song list">
-              <img src="./static/img/Disc-HOME.png" alt="">
+              <img src="./static/img/HOME/Disc-HOME.png" alt="">
             </a>
             <a class="tile" href="#" aria-label="Playlist">
-              <img src="./static/img/Playlist-HOME.png" alt="">
+              <img src="./static/img/HOME/Playlist-HOME.png" alt="">
             </a>
             <a class="tile" href="#" aria-label="Lyrics">
-              <img src="./static/img/Lyrics-HOME.png" alt="">
+              <img src="./static/img/HOME/Lyrics-HOME.png" alt="">
             </a>
           </div>
 
           <a class="educated" href="#">
-            <img src="./static/img/Educated-HOME.png" alt="Are you educated enough?">
+            <img src="./static/img/HOME/Educated-HOME.png" alt="Are you educated enough?">
           </a>
         </div>
+
+        <section class="recent" aria-label="Recently played">
+          <img class="recent-bg" src="./static/img/HOME/RecentlyBG-HOME.png" alt="">
+
+          <div class="recent-body">
+            <h2 class="recent-label">RECENTLY PLAYED</h2>
+
+            <div class="meta">
+              <p class="song">Bayan Ko</p>
+              <p class="artist">Freddie Aguilar</p>
+            </div>
+
+            <div class="progress" role="progressbar" aria-label="Song progress" aria-valuemin="0" aria-valuemax="100" aria-valuenow="11">
+              <span class="knob"></span>
+            </div>
+
+            <div class="controls">
+              <button type="button" class="ctl" aria-label="Shuffle">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M16 3h5v5M4 20 21 3M21 16v5h-5M15 15l6 6M4 4l5 5"/></svg>
+              </button>
+              <button type="button" class="ctl" aria-label="Previous">
+                <svg viewBox="0 0 24 24" fill="currentColor" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 20 9 12l10-8z"/><path d="M5 19V5" fill="none" stroke-width="3"/></svg>
+              </button>
+              <button type="button" class="ctl play" aria-label="Play">
+                <svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
+              </button>
+              <button type="button" class="ctl" aria-label="Next">
+                <svg viewBox="0 0 24 24" fill="currentColor" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 4l10 8-10 8z"/><path d="M19 5v14" fill="none" stroke-width="3"/></svg>
+              </button>
+              <button type="button" class="ctl" aria-label="Repeat">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="m17 2 4 4-4 4"/><path d="M3 11v-1a4 4 0 0 1 4-4h14"/><path d="m7 22-4-4 4-4"/><path d="M21 13v1a4 4 0 0 1-4 4H3"/></svg>
+              </button>
+              <button type="button" class="ctl" aria-label="Volume">
+                <svg viewBox="0 0 24 24" fill="currentColor" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M11 5 6 9H2v6h4l5 4z"/><path d="M15.5 8.5a5 5 0 0 1 0 7M19 5a10 10 0 0 1 0 14" fill="none"/></svg>
+              </button>
+            </div>
+          </div>
+        </section>
+
+        <div class="actions">
+          <a href="#"><img src="./static/img/HOME/Listen-HOME.png" alt="Listen now"></a>
+          <a><img src="./static/img/HOME/SongList-HOME.png" alt="Song list"></a>
+        </div>
+
       </div>
     </section>
 
