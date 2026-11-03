@@ -35,7 +35,7 @@
           <img class="title" src="./static/img/HOME/MartialLaw-HOME.png" alt="Martial Law">
         </div>
 
-        <h2 class="subtitle">PLACEHOLDER HERE</h2>
+        <h2 class="subtitle">PLACEHOLDER</h2>
 
         <section class="facts" aria-label="Facts">
           <img class="facts-bg" src="./static/img/HOME/Facts-HOME.png" alt="">
@@ -72,9 +72,11 @@
           <div class="recent-body">
             <h2 class="recent-label">RECENTLY PLAYED</h2>
 
+            <img class="recent-cover" id="nowCover" src="./static/img/Masagana1.png" alt="Masagana 99 cover">
+
             <div class="meta">
-              <p class="song">Bayan Ko</p>
-              <p class="artist">Freddie Aguilar</p>
+              <p class="song" id="nowTitle">Masagana 99</p>
+              <p class="artist" id="nowArtist"></p>
             </div>
 
             <div class="progress" role="progressbar" aria-label="Song progress" aria-valuemin="0" aria-valuemax="100" aria-valuenow="11">
@@ -82,16 +84,16 @@
             </div>
 
             <div class="controls">
-              <button type="button" class="ctl" aria-label="Shuffle">
+              <button type="button" class="ctl" aria-label="Shuffle" id="btnShuffle">
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M16 3h5v5M4 20 21 3M21 16v5h-5M15 15l6 6M4 4l5 5"/></svg>
               </button>
-              <button type="button" class="ctl" aria-label="Previous">
+              <button type="button" class="ctl" aria-label="Previous" id="btnPrev">
                 <svg viewBox="0 0 24 24" fill="currentColor" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 20 9 12l10-8z"/><path d="M5 19V5" fill="none" stroke-width="3"/></svg>
               </button>
-              <button type="button" class="ctl play" aria-label="Play">
-                <svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
+              <button type="button" class="ctl play" aria-label="Play" id="btnPlay">
+                <svg viewBox="0 0 24 24" fill="currentColor"><path id="playIcon" d="M8 5v14l11-7z"/></svg>
               </button>
-              <button type="button" class="ctl" aria-label="Next">
+              <button type="button" class="ctl" aria-label="Next" id="btnNext">
                 <svg viewBox="0 0 24 24" fill="currentColor" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 4l10 8-10 8z"/><path d="M19 5v14" fill="none" stroke-width="3"/></svg>
               </button>
               <button type="button" class="ctl" aria-label="Repeat">
@@ -105,9 +107,19 @@
         </section>
 
         <div class="actions">
-          <a href="#"><img src="./static/img/HOME/Listen-HOME.png" alt="Listen now"></a>
-          <a><img src="./static/img/HOME/SongList-HOME.png" alt="Song list"></a>
+          <button type="button" id="listenNow"><img src="./static/img/HOME/Listen-HOME.png" alt="Listen now"></button>
+          <button type="button" id="openSongList" aria-haspopup="dialog"><img src="./static/img/HOME/SongList-HOME.png" alt="Song list"></button>
         </div>
+
+        <section class="share" aria-label="Share your favorite song">
+          <img class="share-bg" src="./static/img/HOME/Share-HOME.png" alt="">
+          <form class="share-form" onsubmit="return false">
+            <input class="share-input" type="text" aria-label="Share your favorite song from Martial Law" autocomplete="off">
+            <button class="share-send" type="submit" aria-label="Send">
+              <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M21.5 3.2 2.7 10.6c-.8.3-.8 1.4 0 1.7l4.6 1.7 1.8 5.5c.2.6 1 .8 1.5.3l2.5-2.4 4.5 3.3c.6.4 1.4.1 1.5-.6L22.7 4.4c.2-.8-.5-1.5-1.2-1.2ZM9 13.2l8.6-5.6-6.7 7.3-.3 3.2L9 13.2Z"/></svg>
+            </button>
+          </form>
+        </section>
 
       </div>
     </section>
@@ -115,11 +127,127 @@
   </div>
 </main>
 
+<dialog class="songlist" id="songList" aria-labelledby="songListTitle">
+  <div class="songlist-head">
+    <h2 id="songListTitle">SONG LIST</h2>
+    <button type="button" class="songlist-close" id="closeSongList" aria-label="Close song list">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round"><path d="M5 5l14 14M19 5 5 19"/></svg>
+    </button>
+  </div>
+  <ol class="songlist-items" id="songItems"></ol>
+</dialog>
+
 <footer class="bar">
   <svg class="eye" viewBox="0 0 64 36" aria-hidden="true"><path d="M2 18C12 5 24 2 32 2s20 3 30 16C52 31 40 34 32 34S12 31 2 18Z" fill="var(--teal)"/><circle cx="32" cy="18" r="11" fill="var(--red-dark)"/><circle cx="32" cy="18" r="5" fill="var(--teal)"/></svg>
   <div>Lorem ipsum dolor sit amet consectetur adipiscing elit.</div>
   <small>&copy; 2026 kasgrp6. All rights reserved.</small>
 </footer>
+
+<script>
+const COVER_DIR = "./static/img/";
+const songs = [
+  { title: "Masagana 99",           artist: "",                 cover: "Masagana1.png" },
+  { title: "Pasakalye sa 'Oy Utol", artist: "Heber Bartolome",  cover: "Oy Utol1.png" },
+  { title: "Pirapirasong Balita",   artist: "Heber Bartolome",  cover: "Pirapirasong Balita1.png" },
+  { title: "Saranggola ni Pepe",    artist: "Celeste Legaspi",  cover: "Saranggola ni Pepe1.png" },
+  { title: "Bagong Pagsilang",      artist: "",                 cover: "BagongPagsilang1.png" },
+  { title: "Halina",                artist: "Jess Santiago",    cover: "Halina1.png" },
+  { title: "Martsa ng Bayan",       artist: "Jess Santiago",    cover: "Martsa ng Bayan1.png" }
+];
+
+const dlg = document.getElementById("songList");
+const list = document.getElementById("songItems");
+const nowCover = document.getElementById("nowCover");
+const nowTitle = document.getElementById("nowTitle");
+const nowArtist = document.getElementById("nowArtist");
+const btnPlay = document.getElementById("btnPlay");
+const playIcon = document.getElementById("playIcon");
+
+const PLAY_PATH = "M8 5v14l11-7z";
+const PAUSE_PATH = "M7 5h4v14H7zM13 5h4v14h-4z";
+
+let current = 0;
+let playing = false;
+
+function coverSrc(song){ return COVER_DIR + encodeURI(song.cover); }
+
+function setPlaying(state){
+  playing = state;
+  playIcon.setAttribute("d", playing ? PAUSE_PATH : PLAY_PATH);
+  btnPlay.setAttribute("aria-label", playing ? "Pause" : "Play");
+}
+
+function setSong(i, autoplay){
+  current = (i + songs.length) % songs.length;
+  const s = songs[current];
+  nowCover.src = coverSrc(s);
+  nowCover.alt = s.title + " cover";
+  nowTitle.textContent = s.title;
+  nowArtist.textContent = s.artist;
+  if (autoplay) setPlaying(true);
+  markCurrent();
+}
+
+function markCurrent(){
+  list.querySelectorAll(".songrow").forEach((row, i) => {
+    row.classList.toggle("is-current", i === current);
+  });
+}
+
+function buildList(){
+  songs.forEach((s, i) => {
+    const li = document.createElement("li");
+    li.className = "songrow";
+
+    const text = document.createElement("span");
+    text.className = "songrow-text";
+    const t = document.createElement("strong");
+    t.textContent = s.title;
+    const a = document.createElement("em");
+    a.textContent = s.artist;
+    text.append(t, a);
+
+    const b = document.createElement("button");
+    b.type = "button";
+    b.className = "songrow-play";
+    b.textContent = "PLAY";
+    b.setAttribute("aria-label", "Play " + s.title);
+    b.addEventListener("click", () => {
+      setSong(i, true);
+      dlg.close();
+    });
+
+    li.append(text, b);
+    list.appendChild(li);
+  });
+  markCurrent();
+}
+
+document.getElementById("openSongList").addEventListener("click", () => dlg.showModal());
+document.getElementById("closeSongList").addEventListener("click", () => dlg.close());
+dlg.addEventListener("click", e => { if (e.target === dlg) dlg.close(); });
+
+document.getElementById("listenNow").addEventListener("click", () => {
+  let i = current;
+  if (songs.length > 1) {
+    while (i === current) i = Math.floor(Math.random() * songs.length);
+  }
+  setSong(i, true);
+});
+
+document.getElementById("btnShuffle").addEventListener("click", () => {
+  setSong(Math.floor(Math.random() * songs.length), true);
+});
+document.getElementById("btnPrev").addEventListener("click", () => setSong(current - 1, playing));
+document.getElementById("btnNext").addEventListener("click", () => setSong(current + 1, playing));
+btnPlay.addEventListener("click", () => setPlaying(!playing));
+
+nowCover.addEventListener("error", () => { nowCover.style.visibility = "hidden"; });
+nowCover.addEventListener("load", () => { nowCover.style.visibility = "visible"; });
+
+buildList();
+setSong(0, false);
+</script>
 
 </body>
 </html>

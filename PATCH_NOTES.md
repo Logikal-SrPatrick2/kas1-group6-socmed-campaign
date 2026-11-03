@@ -56,3 +56,7 @@
 ### PRE-ALPHA v0.7.0
 - Added facts bg and placeholder
 - Fixed position of facts
+
+### PRE-ALPHA v0.8.0
+- Added song list, and listen now (temporarily is like a play random button)
+- Added recently played and the share your favorite part vector (no sharing logic done yet)
