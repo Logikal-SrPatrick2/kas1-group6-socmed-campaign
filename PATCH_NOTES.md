@@ -63,3 +63,7 @@
 
 ### PRE-ALPHA v0.9.0
 - Added files for song-player with header and footer
+
+### PRE-ALPHA 0.10.0
+- Implemented record spinning with moving needle
+- Added back button to song-player
