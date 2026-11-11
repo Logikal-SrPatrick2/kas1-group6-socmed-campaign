@@ -13,7 +13,8 @@ const songs = [
     cover: "./static/img/BagongPagsilang1.png", // album cover image
     released: "TBA",                              // release year
     info: "Background information, themes and messages of the song go here.",
-    audio: "",                                    // e.g. "./static/audio/bagong-pagsilang.mp3" (leave empty for no sound)
+    audio: "",
+    lyrics: "",                                    // e.g. "./static/audio/bagong-pagsilang.mp3" (leave empty for no sound)
   },
   {
     title: "Masagana-99 Theme Song",
@@ -22,14 +23,16 @@ const songs = [
     released: "TBA",
     info: "Background information, themes and messages of the song go here.",
     audio: "",
+    lyrics: "",
   },
   {
-    title: "Oy Utol, Buto’t Balat Ka Na’y Natutulog Ka Pa",
-    artist: "Heber Bartolome",
-    cover: "./static/img/Oy Utol1.png",
-    released: "TBA",
-    info: "Background information, themes and messages of the song go here.",
-    audio: "",
+  title: "Oy Utol, Buto’t Balat Ka Na’y Natutulog Ka Pa",
+  artist: "Heber Bartolome",
+  cover: "./static/img/Oy Utol1.png",
+  released: "TBA",
+  info: "Background information, themes and messages of the song go here.",
+  audio: "",
+  lyrics: "",
   },
   {
     title: "Saranggola ni Pepe",
@@ -38,6 +41,15 @@ const songs = [
     released: "TBA",
     info: "Background information, themes and messages of the song go here.",
     audio: "",
+    lyrics: `Lorem ipsum
+Dolor sit amet
+Consectetur adipiscing
+Elit sed do
+
+Eiusmod tempor
+Incididunt ut labore
+Et dolore magna
+Aliqua enim`,
   },
   {
     title: "Halina",
@@ -46,6 +58,7 @@ const songs = [
     released: "TBA",
     info: "Background information, themes and messages of the song go here.",
     audio: "",
+    lyrics: "",
   },
   {
     title: "Pira-pirasong Balita",
@@ -54,6 +67,7 @@ const songs = [
     released: "TBA",
     info: "Background information, themes and messages of the song go here.",
     audio: "",
+    lyrics: "",
   },
   {
     title: "Martsa ng Bayan",
@@ -62,6 +76,7 @@ const songs = [
     released: "TBA",
     info: "Background information, themes and messages of the song go here.",
     audio: "",
+    lyrics: "",
   },
 ];
 
@@ -88,6 +103,17 @@ document.getElementById("title").textContent = song.title;
 document.getElementById("artist").textContent = song.artist;
 document.getElementById("released").textContent = song.released || "TBA";
 document.getElementById("info").textContent = song.info;
+const lyricsContent = document.getElementById("lyricsContent");
+
+lyricsContent.innerHTML = "";
+
+(song.lyrics || "Lyrics are not available yet.")
+  .split("\n")
+  .forEach(line => {
+    const span = document.createElement("span");
+    span.textContent = line || "\u00A0";
+    lyricsContent.appendChild(span);
+  });
 if (song.audio) audio.src = song.audio;
 
 function setPlaying(on) {
@@ -129,4 +155,19 @@ const repeatBtn = document.getElementById("repeat");
 repeatBtn.addEventListener("click", () => {
   audio.loop = !audio.loop;
   repeatBtn.setAttribute("aria-pressed", audio.loop);
+});
+
+// lyrics
+const playerLayout = document.getElementById("playerLayout");
+const lyricsBtn = document.getElementById("lyricsBtn");
+const lyricsPanel = document.getElementById("lyricsPanel");
+
+lyricsBtn.addEventListener("click", () => {
+  const open = lyricsPanel.hidden;
+
+  lyricsPanel.hidden = !open;
+  playerLayout.classList.toggle("show-lyrics", open);
+
+  lyricsBtn.textContent = open ? "CLOSE LYRICS" : "LYRICS";
+  lyricsBtn.setAttribute("aria-expanded", String(open));
 });

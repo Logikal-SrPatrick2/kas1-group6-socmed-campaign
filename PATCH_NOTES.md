@@ -71,3 +71,7 @@
 ### PRE-ALPHA 0.11.0
 - Implement queue system
 - Fix song list
+
+### PRE-ALPHA 0.12.0
+- Added lyrics column when button is pressed
+- Made lyrics underlined when hovered
