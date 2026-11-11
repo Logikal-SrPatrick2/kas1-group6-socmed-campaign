@@ -60,3 +60,6 @@
 ### PRE-ALPHA v0.8.0
 - Added song list, and listen now (temporarily is like a play random button)
 - Added recently played and the share your favorite part vector (no sharing logic done yet)
+
+### PRE-ALPHA v0.9.0
+- Added files for song-player with header and footer
