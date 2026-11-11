@@ -506,3 +506,192 @@ main{
   transform:scale(1.08);
   outline:none;
 }
+/* ===== QUEUE ===== */
+
+/* Playlist tile is now a <button>, so reset the default button look */
+button.tile{
+  width:100%;
+  height:100%;
+  align-self:stretch;
+  padding:0;
+  background:none;
+  border:0;
+  font:inherit;
+  color:inherit;
+  cursor:pointer;
+}
+
+/* Count badge on the queue tile */
+.queue-badge{
+  position:absolute;
+  top:4%;
+  right:4%;
+  z-index:1;
+  min-width:1.5em;
+  height:1.5em;
+  padding:0 .35em;
+  display:grid;
+  place-items:center;
+  border-radius:999px;
+  background:var(--teal);
+  color:#000;
+  font-weight:800;
+  font-size:clamp(.65rem,1vw,.9rem);
+  line-height:1;
+  box-shadow:0 0 8px var(--teal);
+  pointer-events:none;
+}
+.queue-badge[hidden]{display:none}
+
+/* Header: CLEAR + close side by side */
+.songlist-head-actions{
+  display:flex;
+  align-items:center;
+  gap:1.1rem;
+}
+.queue-clear{
+  background:none;
+  border:0;
+  padding:.3rem .5rem;
+  font-family:var(--font-title);
+  font-size:1.4rem;
+  letter-spacing:.1em;
+  line-height:1;
+  color:#fff;
+  cursor:pointer;
+  transition:color .2s, text-shadow .2s, opacity .2s;
+}
+.queue-clear:hover:not(:disabled),
+.queue-clear:focus-visible:not(:disabled){
+  color:var(--teal);
+  text-shadow:0 0 10px var(--teal);
+  outline:none;
+}
+.queue-clear:disabled{opacity:.3;cursor:default}
+
+/* Section headings: NOW PLAYING / NEXT IN QUEUE */
+.queue-heading{
+  font-family:var(--font-title);
+  font-weight:400;
+  font-size:1.25rem;
+  letter-spacing:.1em;
+  line-height:1;
+  color:rgba(255,255,255,.7);
+  padding:1rem .25rem .4rem 1rem;
+}
+.queue-rows{list-style:none}
+.queue-empty{
+  padding:1.5rem 1rem;
+  text-align:center;
+  font-size:.95rem;
+  color:rgba(255,255,255,.6);
+}
+
+/* Row buttons (shared by Song List "+ QUEUE" and Queue "remove") */
+.songrow-actions{
+  display:flex;
+  align-items:center;
+  gap:.4rem;
+  flex:none;
+}
+.songrow-queue{
+  flex:none;
+  min-width:2.2rem;
+  background:none;
+  border:0;
+  padding:.4rem .6rem;
+  font-family:var(--font-title);
+  font-size:2rem;
+  text-align:center;
+  letter-spacing:0;
+  line-height:1;
+  color:rgba(255,255,255,.85);
+  cursor:pointer;
+  transition:color .2s, text-shadow .2s, transform .2s;
+}
+.songrow-queue:hover,
+.songrow-queue:focus-visible{
+  color:var(--teal);
+  text-shadow:0 0 10px var(--teal);
+  transform:scale(1.08);
+  outline:none;
+}
+.songrow-queue.is-added,
+.songrow-queue.is-added:hover{
+  color:var(--teal);
+  text-shadow:none;
+  transform:none;
+  cursor:default;
+}
+
+.songrow-remove{
+  flex:none;
+  width:1.9rem;
+  height:1.9rem;
+  display:grid;
+  place-items:center;
+  background:none;
+  border:1px solid rgba(255,255,255,.5);
+  border-radius:50%;
+  color:#fff;
+  cursor:pointer;
+  transition:color .2s, border-color .2s, box-shadow .2s;
+}
+.songrow-remove svg{width:55%;height:55%}
+.songrow-remove:hover,
+.songrow-remove:focus-visible{
+  color:var(--red-bright);
+  border-color:var(--red-bright);
+  box-shadow:0 0 8px var(--red-bright);
+  outline:none;
+}
+
+@media (max-width:520px){
+  .songrow-queue,.songrow-play{font-size:1.3rem;padding:.4rem .35rem}
+  .songrow{gap:.5rem}
+}
+
+/* ===== QUEUE: drag to reorder ===== */
+.songrow-main{
+  display:flex;
+  align-items:center;
+  gap:.75rem;
+  min-width:0;
+}
+.songrow-grip{
+  flex:none;
+  width:1.6rem;
+  height:1.9rem;
+  display:grid;
+  place-items:center;
+  padding:0;
+  background:none;
+  border:0;
+  color:rgba(255,255,255,.55);
+  cursor:grab;
+  touch-action:none;
+  transition:color .2s;
+}
+.songrow-grip svg{width:100%;height:100%}
+.songrow-grip:hover,
+.songrow-grip:focus-visible{color:var(--teal);outline:none}
+
+.queue-rows .songrow{
+  -webkit-user-select:none;
+  user-select:none;
+}
+.songrow.is-shifting{
+  transition:transform .15s ease, background .2s, border-color .2s;
+}
+.songrow.is-dragging{
+  position:relative;
+  z-index:2;
+  background:#0c2b24;
+  border-left-color:var(--teal);
+  box-shadow:0 0 16px rgba(0,217,160,.45);
+  transition:none;
+}
+.songrow.is-dragging .songrow-grip{
+  cursor:grabbing;
+  color:var(--teal);
+}

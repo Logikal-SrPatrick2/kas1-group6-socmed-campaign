@@ -67,3 +67,7 @@
 ### PRE-ALPHA 0.10.0
 - Implemented record spinning with moving needle
 - Added back button to song-player
+
+### PRE-ALPHA 0.11.0
+- Implement queue system
+- Fix song list
