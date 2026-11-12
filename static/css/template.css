@@ -79,6 +79,7 @@ main{
   margin-top:1rem;
   align-items:stretch;
 }
+.hero > *{min-width:0} /* stop grid columns from growing with their content */
 .hero img{display:block;width:100%;height:auto}
 
 .left{
@@ -235,9 +236,10 @@ main{
 }
 .meta{
   left:43.2%;
-  top:17.4%;
+  top:12%;
   width:46.3%;
-  height:14cqw;
+  /* ends just above the progress bar (top:54%) so long titles can never overlap it */
+  height:38%;
   overflow:hidden;
   display:flex;
   flex-direction:column;
@@ -245,8 +247,10 @@ main{
   text-align:center;
 }
 .song{
+  flex:0 1 auto;
+  min-height:0;
   font-weight:800;
-  font-size:3.4cqw;
+  font-size:3cqw;
   line-height:1.1;
   overflow-wrap:anywhere;
   display:-webkit-box;
@@ -256,15 +260,14 @@ main{
   overflow:hidden;
 }
 .artist{
-  font-size:2.4cqw;
-  line-height:1.2;
-  min-height:1.2em;
-  overflow-wrap:anywhere;
-  display:-webkit-box;
-  -webkit-box-orient:vertical;
-  -webkit-line-clamp:2;
-  line-clamp:2;
+  flex:none;
+  font-size:2.1cqw;
+  line-height:1.25;
+  min-height:1.25em;
+  margin-top:.4cqw;
+  white-space:nowrap;
   overflow:hidden;
+  text-overflow:ellipsis;
 }
 .progress{
   left:43.2%;
@@ -744,3 +747,73 @@ button.tile{
   cursor:pointer;
 }
 .vol-slider[hidden]{display:none}
+/* ---------- lyrics pop-up (same look as the lyrics panel on the song player) ---------- */
+.lyrics-dialog{
+  margin:auto;
+  width:min(800px,92vw);
+  height:min(625px,84vh);
+  padding:0;
+  border:0;
+  border-radius:18px;
+  background:#07191d;
+  color:var(--mist);
+  overflow:hidden;
+}
+.lyrics-dialog[open]{display:flex;flex-direction:column}
+.lyrics-dialog::backdrop{background:rgba(0,0,0,.78)}
+.lyrics-inner{
+  flex:1;
+  min-height:0;
+  display:flex;
+  flex-direction:column;
+  padding:1.5rem;
+}
+.lyrics-head{
+  display:flex;
+  align-items:flex-start;
+  justify-content:space-between;
+  gap:1rem;
+  margin-bottom:1.25rem;
+}
+.lyrics-head h2{
+  font-family:"Righteous",sans-serif;
+  font-size:3rem;
+  font-weight:400;
+  letter-spacing:.02em;
+  line-height:1;
+  color:var(--mist);
+}
+.lyrics-song{
+  margin-top:.6rem;
+  color:var(--teal);
+  font-weight:800;
+  font-size:.95rem;
+  line-height:1.3;
+}
+.lyrics-text{
+  flex:1;
+  min-height:0;
+  overflow-y:auto;
+  overflow-x:hidden;
+  padding-right:12px;
+  font-family:var(--font-ui);
+  font-size:1.25rem;
+  font-weight:800;
+  line-height:2;
+  white-space:pre-wrap;
+  color:var(--mist);
+  scrollbar-width:thin;
+  scrollbar-color:var(--teal) transparent;
+  outline:none;
+}
+.lyrics-text span{
+  display:block;
+  width:fit-content;
+  max-width:100%;
+  transition:text-decoration .15s ease;
+}
+.lyrics-text span:hover{text-decoration:underline;text-underline-offset:5px}
+@media (max-width:520px){
+  .lyrics-head h2{font-size:2.2rem}
+  .lyrics-text{font-size:1.05rem}
+}

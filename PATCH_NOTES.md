@@ -173,3 +173,8 @@
 
 ### ALPHA v0.17.5
 - Added actual song playing
+
+### ALPHA v0.18.0
+- Added lyrics to home.html
+- Added random facts
+- Fixed resizing in home.html
