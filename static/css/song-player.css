@@ -546,3 +546,13 @@ main {
   text-decoration: underline;
   text-underline-offset: 5px;
 }
+
+/* ===== Header logo (replaces the eye in the top bar) ===== */
+.logo{display:block;flex:none;line-height:0}
+.logo img{display:block;height:52px;width:auto}
+.logo:hover img,
+.logo:focus-visible img{filter:drop-shadow(0 0 8px var(--teal))}
+.logo:focus-visible{outline:none}
+
+/* ===== Footer logo (not clickable) ===== */
+.footer-logo{display:block;height:48px;width:auto;margin:0 auto .4rem}

@@ -109,3 +109,8 @@
 ### PRE-ALPHA 0.12.3
 
 - Added songs to audio file except "Pira-pirasong Balita"
+
+### PRE-ALPHA 0.13
+
+- Removed home button
+- Replace placeholder logo with clickable logo
