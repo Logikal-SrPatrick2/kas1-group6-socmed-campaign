@@ -277,7 +277,7 @@ main {
 
 /* ---------- Controls ---------- */
 .controls {
-  width: 86%;
+  width: 95%;
   align-self: center;
   display: flex;
   align-items: center;
@@ -576,71 +576,72 @@ main {
   margin: 0 auto 0.4rem;
 }
 
-.annotation-panel {
-  display: none;
-  width: 100%;
-  height: 450px;
-  min-width: 0;
-  min-height: 0;
-  box-sizing: border-box;
-  padding: 1.5rem;
-  border-radius: 18px;
-  background: var(--ink);
-  color: var(--mist);
-  overflow: hidden;
-  flex-direction: column;
-}
-
 .annotation-panel:not([hidden]) {
   display: flex;
 }
 
-.annotation-panel h2 {
-  font-family: "Righteous", sans-serif;
-  font-size: 3rem;
-  font-weight: 400;
-  text-align: left;
-  margin-bottom: 1.5rem;
-  color: var(--mist);
+/* ---------- Paragraph-synced lyrics ---------- */
+.lyrics-content{white-space:normal;line-height:1.6}
+.lyric-block{
+  margin-bottom:.7rem;
+  padding:.7rem 1rem;
+  border-left:4px solid transparent;
+  border-radius:0 12px 12px 0;
+  transition:opacity .25s, background .25s, border-color .25s;
+}
+.lyric-label{
+  font-family:var(--font-title);
+  font-size:1rem;
+  letter-spacing:.1em;
+  line-height:1;
+  margin-bottom:.35rem;
+  color:var(--teal);
+}
+.lyric-text{white-space:pre-line}
+.lyric-block.is-synced{cursor:pointer}
+
+/* dimming only starts once you've filled in at least one timestamp */
+.lyrics-content.has-sync .lyric-block{opacity:.45}
+.lyrics-content.has-sync .lyric-block.is-synced:hover{opacity:.75}
+.lyrics-content.has-sync .lyric-block.is-active{
+  opacity:1;
+  background:rgba(0,217,160,.1);
+  border-left-color:var(--teal);
 }
 
-.annotation-content {
-  flex: 1;
-  min-height: 0;
-  overflow-y: auto;
-  overflow-x: hidden;
-  padding-right: 12px;
-  font-family: var(--font-ui);
-  color: var(--mist);
-  line-height: 1.8;
+/* ---------- Annotation card (appears under the lyrics) ---------- */
+.annotation{
+  flex:none;
+  max-height:40%;
+  overflow-y:auto;
+  margin-top:1rem;
+  padding:1rem 1.2rem;
+  border-left:4px solid var(--teal);
+  border-radius:0 12px 12px 0;
+  background:rgba(255,255,255,.06);
+  animation:annotation-in .35s ease;
+  scrollbar-color:var(--teal) transparent;
 }
-
-.player-layout.show-lyrics .annotation-panel {
-  width: 100%;
-  max-width: 800px;
-  height: 625px;
-  justify-self: start;
+.annotation[hidden]{display:none}
+@keyframes annotation-in{
+  from{opacity:0;transform:translateY(8px)}
+  to{opacity:1;transform:none}
 }
-
-#annotationBtn {
-  /* Match the existing lyrics button */
-  font-family: inherit;
-  font-size: inherit;
-  font-weight: inherit;
-  color: inherit;
-  background: transparent;
-
-  border: 1px solid var(--mist);
-  border-radius: 999px;
-
-  padding: 0.6rem 1.2rem;
-  cursor: pointer;
-
-  transition: 0.2s ease;
+.annotation-label{
+  font-family:var(--font-title);
+  font-size:1.4rem;
+  letter-spacing:.08em;
+  line-height:1;
+  color:var(--teal);
 }
-
-#annotationBtn:hover {
-  background: var(--teal);
-  border-color: var(--teal);
-  color: var(--ink);
+.annotation-quote{
+  margin-top:.6rem;
+  font-family:var(--font-display);
+  font-size:.9rem;
+  line-height:1.4;
+  white-space:pre-line;
+  color:rgba(214,220,224,.7);
 }
+.annotation-text{margin-top:.7rem;font-size:1rem;line-height:1.6}
+.annotation-text p + p{margin-top:.6rem}
+@media (prefers-reduced-motion:reduce){.annotation{animation:none}}

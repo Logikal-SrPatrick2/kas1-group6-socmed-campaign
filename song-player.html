@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>KAS | Song Player</title>
+    <title>DATIPHAPON | Song Player</title>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link
       href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;800&family=Bebas+Neue&family=Special+Elite&display=swap"
@@ -139,7 +139,6 @@
             </div>
 
             <button class="lyrics" id="lyricsBtn" type="button">LYRICS</button>
-            <button id="annotationBtn" type="button">LYRICS ANNOTATION</button>
           </section>
 
           <aside class="corner">
@@ -151,17 +150,17 @@
         <aside class="lyrics-panel" id="lyricsPanel" hidden>
           <h2>LYRICS</h2>
           <div class="lyrics-content" id="lyricsContent"></div>
-        </aside>
-        <aside class="annotation-panel" id="annotationPanel" hidden>
-          <h2>LYRICS ANNOTATION</h2>
-          <div class="annotation-content" id="annotationContent"></div>
+          <div class="annotation" id="annotationBox" hidden aria-live="polite">
+            <p class="annotation-label" id="annotationLabel"></p>
+            <div class="annotation-text" id="annotationText"></div>
+          </div>
         </aside>
       </div>
     </main>
 
     <footer class="bar">
       <img class="footer-logo" src="./static/img/Project_Logo.png" alt="" />
-      <div>Lorem ipsum dolor sit amet consectetur adipiscing elit.</div>
+      <div>DAPITHAPON | Tindig ng Himig</div>
       <small>&copy; 2026 kasgrp6. All rights reserved.</small>
     </footer>
 
