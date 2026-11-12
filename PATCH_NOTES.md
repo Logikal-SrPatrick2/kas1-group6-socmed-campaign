@@ -178,3 +178,6 @@
 - Added lyrics to home.html
 - Added random facts
 - Fixed resizing in home.html
+
+### ALPHA v0.18.1
+- Added contextual text to home.html
