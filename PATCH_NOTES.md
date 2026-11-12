@@ -197,3 +197,7 @@
 ### ALPHA v0.19.2
 
 - Edited about-us
+
+### BETA v0.20.0
+- completely got rid of search bar
+- PUBLISHING WEBSITE
