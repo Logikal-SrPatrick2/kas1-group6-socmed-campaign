@@ -40,7 +40,45 @@ May bago nang buhay,
 Bagong bansa, bagong galaw
 Sa Bagong Lipunan!
 Magbabago ang lahat, tungo sa pag-unlad,
-At ating itanghal: Bagong Lipunan!`, // e.g. "./static/audio/bagong-pagsilang.mp3" (leave empty for no sound)
+At ating itanghal: Bagong Lipunan!`,
+    annotations: `
+May bagong silang.
+May bago nang buhay,
+Bagong bansa, bagong galaw
+Aa Bagong Lipunan!
+
+- Annotation 01
+The lyrics announce the birth of a supposedly new Philippines. The words "bagong silang" and "bagong buhay" symbolize a fresh beginning, suggesting that the country is leaving its previous problems behind.
+
+Following the declaration of Martial Law in September 1972, Marcos promoted the Bagong Lipunan as a national transformation emphasizing discipline, order, unity, and development.
+
+
+Magbabago ang lahat, tungo sa pag-unlad,
+At ating itanghal: Bagong Lipunan!
+
+- Annotation 02
+The lyrics promise that everything will change for the better and that the country will move toward development.
+
+The Marcos government used the New Society campaign to promote its political and economic programs.
+
+
+Verse 2
+
+Ang gabi'y nagmaliw nang ganap,
+At lumipas na ang magdamag.
+Madaling araw ay nagdiriwang.
+May umagang namasdan.
+
+- Annotation 03
+Night and darkness represent a difficult past, while dawn represents hope, renewal, and a brighter future.
+
+
+Ngumiti na ang pag-asa
+Sa umagang anong ganda!
+
+- Annotation 04
+The lyrics personify hope as something that has returned to the country. The beautiful morning symbolizes the anticipated benefits of the New Society.
+`,
   },
   {
     title: "Masagana-99 Theme Song",
@@ -274,6 +312,18 @@ lyricsContent.innerHTML = "";
   span.textContent = line || "\u00A0";
   lyricsContent.appendChild(span);
 });
+const annotationContent = document.getElementById("annotationContent");
+
+annotationContent.innerHTML = "";
+
+(song.annotations || "Annotations are not available yet.")
+  .split("\n")
+  .forEach((line) => {
+    const span = document.createElement("span");
+    span.textContent = line || "\u00A0";
+    annotationContent.appendChild(span);
+  });
+
 if (song.audio) audio.src = song.audio;
 
 function setPlaying(on) {
@@ -327,16 +377,32 @@ repeatBtn.addEventListener("click", () => {
 });
 
 // lyrics
-const playerLayout = document.getElementById("playerLayout");
 const lyricsBtn = document.getElementById("lyricsBtn");
+const annotationBtn = document.getElementById("annotationBtn");
 const lyricsPanel = document.getElementById("lyricsPanel");
+const annotationPanel = document.getElementById("annotationPanel");
+const playerLayout = document.getElementById("playerLayout");
 
 lyricsBtn.addEventListener("click", () => {
-  const open = lyricsPanel.hidden;
+  const alreadyOpen = !lyricsPanel.hidden;
 
-  lyricsPanel.hidden = !open;
-  playerLayout.classList.toggle("show-lyrics", open);
+  lyricsPanel.hidden = alreadyOpen;
+  annotationPanel.hidden = true;
 
-  lyricsBtn.textContent = open ? "CLOSE LYRICS" : "LYRICS";
-  lyricsBtn.setAttribute("aria-expanded", String(open));
+  playerLayout.classList.toggle("show-lyrics", !alreadyOpen);
+
+  lyricsBtn.setAttribute("aria-expanded", String(!alreadyOpen));
+  annotationBtn.setAttribute("aria-expanded", "false");
+});
+
+annotationBtn.addEventListener("click", () => {
+  const alreadyOpen = !annotationPanel.hidden;
+
+  annotationPanel.hidden = alreadyOpen;
+  lyricsPanel.hidden = true;
+
+  playerLayout.classList.toggle("show-lyrics", !alreadyOpen);
+
+  annotationBtn.setAttribute("aria-expanded", String(!alreadyOpen));
+  lyricsBtn.setAttribute("aria-expanded", "false");
 });

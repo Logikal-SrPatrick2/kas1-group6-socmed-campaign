@@ -169,4 +169,9 @@
 - Fixed `PATCH_NOTES.md` format
 
 ### ALPHA v0.17.4
+
 - Resolved conflicts and removed search bars except for song playing
+
+### ALPHA v0.18.0
+
+- Added lyrics annotation (incomplete)
