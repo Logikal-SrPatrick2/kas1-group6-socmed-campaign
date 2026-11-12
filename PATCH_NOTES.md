@@ -116,36 +116,57 @@
 - Replace placeholder logo with clickable logo
 
 ### PRE-ALPHA 0.13.1
+
 - Fix logo not sizing properly
 
 ### PRE-ALPHA 0.14.0
+
 - Fix song-player resizing handling
 - Added temporary share clear
 
 ### ALPHA v0.15.0
+
 - Removed spare home html
 - Updated template html to home html
 - Connected every html to one another (including song selection to song player)
 
 ### ALPHA v0.15.1
+
 - Remove pira pirasong balita from code
 
 ### ALPHA v0.15.2
+
 - Removed settings
 - Updated navbar
 
 ### ALPHA v0.15.3
+
 - Changed placeholder subtitle in home to "Historical Distortion in Music"
 
 ### ALPHA v0.16.0
+
 - Added about us html (incomplete info)
 - Added facts html (complete info)
 
 ### ALPHA v0.16.1
+
 - Added release dates and background info per song
 
 ### ALPHA v0.17.0
+
 - Fixed home.html and added songplaying to home.html
 
 ### ALPHA v0.17.1
-- Removed search bar (except songplayer to avoid merge conflict for now)
+
+- Updated about us
+
+### ALPHA v0.17.2
+
+- Updated about us (Quiza)
+
+### ALPHA v0.17.3
+
+- Fixed `PATCH_NOTES.md` format
+
+### ALPHA v0.17.4
+- Resolved conflicts and removed search bars except for song playing
