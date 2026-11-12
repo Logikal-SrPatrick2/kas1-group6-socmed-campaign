@@ -4,7 +4,6 @@ const songs = [
   { title: "Oy Utol, Buto’t Balat Ka Na’y Natutulog Ka Pa", artist: "Heber Bartolome",                               cover: "./static/img/Oy Utol1.png" },
   { title: "Saranggola ni Pepe",                            artist: "Celeste Legaspi",                               cover: "./static/img/Saranggola ni Pepe1.png" },
   { title: "Halina",                                        artist: "Jess Santiago",                                 cover: "./static/img/Halina1.png" },
-  { title: "Pira-pirasong Balita",                          artist: "Paul Galang",                                   cover: "./static/img/Pirapirasong Balita1.png" },
   { title: "Martsa ng Bayan",                               artist: "Jess Santiago",                                 cover: "./static/img/Martsa ng Bayan1.png" },
 ];
 

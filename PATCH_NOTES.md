@@ -126,3 +126,6 @@
 - Removed spare home html
 - Updated template html to home html
 - Connected every html to one another (including song selection to song player)
+
+### ALPHA v0.15.1
+- Remove pira pirasong balita from code
