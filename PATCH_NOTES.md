@@ -133,4 +133,10 @@
 ### ALPHA v0.15.2
 - Removed settings
 - Updated navbar
+
+### ALPHA v0.15.3
 - Changed placeholder subtitle in home to "Historical Distortion in Music"
+
+### ALPHA v0.16.0
+- Added about us html (incomplete info)
+- Added facts html (complete info)

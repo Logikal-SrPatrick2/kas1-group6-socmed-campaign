@@ -1,0 +1,301 @@
+:root{
+  --red-bright:#ff1018;
+  --red:#a62023;
+  --red-dark:#6b0000;
+  --black:#000;
+  --slate:#34464e;
+  --mist:#d6dce0;
+  --teal:#00d9a0;
+
+  --font-display:"Special Elite","Courier New",monospace;
+  --font-title:"Bebas Neue",Impact,sans-serif;
+  --font-ui:"Montserrat",system-ui,sans-serif;
+
+  --grid-size:48px;
+  --grid-line:1px;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html,body{height:100%}
+body{
+  min-height:100vh;display:flex;flex-direction:column;
+  background:var(--black);color:#fff;font-family:var(--font-ui);overflow-x:hidden;
+}
+
+.bar{
+  background-color:var(--red-dark);
+  background-image:radial-gradient(rgba(255,255,255,.25) 1.5px,transparent 2px);
+  background-size:42px 42px;
+}
+header.bar{display:flex;align-items:center;gap:2rem;padding:.9rem 1.5rem;position:relative;z-index:5}
+.eye{width:48px;height:auto;flex:none}
+nav{display:flex;flex:1;justify-content:space-around;gap:1rem}
+nav a{color:#fff;text-decoration:none;font-weight:800;letter-spacing:.06em;font-size:1.05rem;padding:.3rem .5rem}
+nav a:hover,nav a:focus-visible{color:var(--teal);outline:none}
+.search{display:flex;width:min(34vw,420px);background:var(--red);border-radius:999px;overflow:hidden}
+.search input{flex:1;min-width:0;background:none;border:0;color:#fff;padding:.7rem 1rem;font:inherit;outline:none}
+.search button{background:var(--red-dark);border:0;color:#fff;padding:0 .9rem;cursor:pointer;display:grid;place-items:center}
+.search svg{width:22px;height:22px}
+
+footer.bar{text-align:center;padding:1rem 1rem 1.1rem;font-size:.95rem}
+footer .eye{width:40px;margin-bottom:.4rem}
+footer small{display:block;margin-top:.35rem;font-weight:800}
+
+.logo{display:block;flex:none;line-height:0}
+.logo img{display:block;height:52px;width:auto}
+.logo:hover img,
+.logo:focus-visible img{filter:drop-shadow(0 0 8px var(--teal))}
+.logo:focus-visible{outline:none}
+
+.footer-logo{display:block;height:48px;width:auto;margin:0 auto .4rem}
+
+/* header on small screens: logo + search on row 1, nav on row 2 (identical in every page's stylesheet) */
+@media (max-width:700px){
+  header.bar{flex-wrap:wrap;gap:.6rem 1rem;padding:.7rem 1rem}
+  .search{width:auto;flex:1}
+  nav{order:3;flex:1 0 100%;justify-content:space-around}
+}
+
+/* ============================================================
+   Text-heavy pages: about-us.html and facts.html
+   Everything above this line is the shared site chrome and
+   matches the other stylesheets. Page content styles follow.
+   ============================================================ */
+
+html{scroll-behavior:smooth}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+@media (max-resolution:.99dppx){:root{--grid-line:2px}}
+
+main{
+  flex:1 0 auto;
+  padding:1.5rem 1.5rem 4rem;
+  overflow-x:clip;
+  /* same teal grid as the home page */
+  background:
+    linear-gradient(rgba(0,217,160,.35) var(--grid-line),transparent var(--grid-line)),
+    linear-gradient(90deg,rgba(0,217,160,.35) var(--grid-line),transparent var(--grid-line)),
+    var(--black);
+  background-size:var(--grid-size) var(--grid-size),var(--grid-size) var(--grid-size),auto;
+}
+.page{width:100%;max-width:1240px;margin:0 auto}
+
+/* ---------- Page banner (image + title) ---------- */
+.page-hero{
+  position:relative;
+  aspect-ratio:1337 / 250;
+  min-height:150px;
+  overflow:hidden;
+  background:var(--red-dark);
+  border-bottom:4px solid var(--red-bright);
+}
+.page-hero > img{
+  position:absolute;inset:0;
+  display:block;width:100%;height:100%;
+  object-fit:cover;
+}
+.page-hero::after{
+  content:"";position:absolute;inset:0;
+  background:linear-gradient(to top,rgba(0,0,0,.9),rgba(0,0,0,.1) 75%);
+}
+.page-hero-text{position:absolute;left:0;right:0;bottom:0;z-index:1;padding:0 1.5rem 1rem}
+.kicker{
+  display:inline-block;
+  margin-bottom:.45rem;padding:.25rem .7rem;
+  background:var(--black);border-left:3px solid var(--teal);
+  font-family:var(--font-display);
+  font-size:clamp(.75rem,1.4vw,1rem);
+  letter-spacing:.08em;text-transform:uppercase;
+  color:var(--teal);
+}
+.page-hero h1{
+  font-family:var(--font-title);font-weight:400;
+  font-size:clamp(3rem,8vw,6rem);line-height:.9;letter-spacing:.03em;
+  text-shadow:3px 0 var(--red);
+}
+
+/* ---------- Layout ---------- */
+.content{margin-top:1.5rem}
+.panel{
+  background:rgba(0,0,0,.84);
+  border:1px solid rgba(0,217,160,.4);
+  padding:clamp(1.25rem,3vw,2.5rem);
+}
+.layout-toc{
+  display:grid;
+  grid-template-columns:230px minmax(0,1fr);
+  gap:1.5rem;
+  align-items:start;
+}
+
+/* "On this page" list (facts) */
+.toc{
+  position:sticky;top:1rem;
+  padding:1.1rem 1rem 1.2rem;
+}
+.toc-label{
+  font-family:var(--font-display);
+  font-size:.85rem;letter-spacing:.08em;text-transform:uppercase;
+  color:var(--teal);margin-bottom:.7rem;
+}
+.toc ol{list-style:none}
+.toc a{
+  display:block;padding:.45rem .8rem;
+  border-left:3px solid var(--slate);
+  color:#fff;text-decoration:none;
+  font-weight:800;font-size:.85rem;letter-spacing:.05em;text-transform:uppercase;
+  transition:color .2s,border-color .2s;
+}
+.toc a:hover,.toc a:focus-visible{color:var(--teal);border-color:var(--teal);outline:none}
+
+/* ---------- Text content: just paste normal HTML inside .prose ---------- */
+.prose{font-size:1.05rem;line-height:1.75;color:#e6eaec}
+:where(.prose,.prose section) > * + *{margin-top:1.1rem}
+.prose section{display:flow-root;scroll-margin-top:1rem}
+.prose > section + section{margin-top:3.5rem}
+
+.prose h2{
+  display:flex;align-items:center;gap:.7rem;
+  font-family:var(--font-title);font-weight:400;
+  font-size:clamp(2rem,4.2vw,3rem);line-height:1;letter-spacing:.04em;
+  color:#fff;
+}
+.prose h2::before{content:"";flex:none;width:.45rem;height:.85em;background:var(--red-bright)}
+.prose h2::after{content:"";flex:1;min-width:1rem;height:2px;background:rgba(0,217,160,.4)}
+.prose h3{
+  margin-top:2rem;
+  font-weight:800;font-size:1.05rem;letter-spacing:.06em;text-transform:uppercase;
+  color:var(--teal);
+}
+.prose p{max-width:70ch}
+.prose .lead{font-size:1.3rem;line-height:1.55;color:#fff}
+.prose strong{color:#fff}
+.prose a{color:var(--teal);text-underline-offset:.2em}
+.prose a:hover,.prose a:focus-visible{color:#fff;outline:none}
+.prose ul,.prose ol{max-width:70ch;padding-left:1.4rem}
+.prose li + li{margin-top:.4rem}
+.prose li::marker{color:var(--red-bright)}
+
+/* pull quote */
+.prose blockquote{
+  padding:1.2rem 1.5rem;
+  border-left:5px solid var(--red-bright);
+  background:linear-gradient(90deg,rgba(166,32,35,.35),transparent);
+  font-family:var(--font-display);font-size:1.3rem;line-height:1.5;color:#fff;
+}
+.prose blockquote cite{
+  display:block;margin-top:.8rem;
+  font-family:var(--font-ui);font-style:normal;font-weight:800;
+  font-size:.85rem;letter-spacing:.06em;text-transform:uppercase;color:var(--teal);
+}
+
+/* images: <figure class="right|left"> floats beside the text, plain <figure> is full width */
+.prose figure img{display:block;width:100%;height:auto;border:2px solid rgba(0,217,160,.5)}
+.prose figcaption{
+  margin-top:.5rem;padding-left:.7rem;
+  border-left:3px solid var(--red-bright);
+  font-family:var(--font-display);font-size:.85rem;line-height:1.4;color:var(--mist);
+}
+.prose figure.right{float:right;width:min(44%,400px);margin:.3rem 0 1rem 2rem}
+.prose figure.left{float:left;width:min(44%,400px);margin:.3rem 2rem 1rem 0}
+.prose figure.cover{width:min(30%,220px)}
+.figure-row{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:1rem}
+.prose .figure-row figure{margin:0}
+
+/* tables: keep every <table> inside <div class="table-wrap"> so wide tables scroll on phones */
+.table-wrap{overflow-x:auto;max-width:100%;border:1px solid rgba(0,217,160,.4)}
+.prose table{width:100%;min-width:560px;border-collapse:collapse;font-size:.98rem;line-height:1.5}
+.prose caption{
+  caption-side:bottom;padding:.6rem .9rem;text-align:left;
+  font-family:var(--font-display);font-size:.85rem;color:var(--mist);
+}
+.prose thead th{
+  padding:.7rem .9rem;text-align:left;white-space:nowrap;
+  background-color:var(--red-dark);
+  background-image:radial-gradient(rgba(255,255,255,.25) 1.5px,transparent 2px);
+  background-size:42px 42px;
+  font-family:var(--font-title);font-weight:400;font-size:1.25rem;letter-spacing:.08em;color:#fff;
+}
+.prose td{padding:.8rem .9rem;vertical-align:top;border-top:1px solid rgba(0,217,160,.2)}
+.prose tbody tr:nth-child(even){background:rgba(255,255,255,.04)}
+.prose tbody tr:hover{background:rgba(0,217,160,.08)}
+.prose td.year{
+  white-space:nowrap;
+  font-family:var(--font-title);font-size:1.5rem;line-height:1.2;letter-spacing:.04em;color:var(--teal);
+}
+.prose table.kv td:first-child{width:32%;font-weight:800;color:#fff}
+
+/* big-number highlight cards */
+.stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:1rem}
+.stat{
+  padding:1.2rem 1.3rem 1.3rem;
+  background:linear-gradient(160deg,rgba(166,32,35,.55),rgba(0,0,0,.9) 70%);
+  border:1px solid rgba(255,16,24,.45);
+}
+.stat-number{
+  display:block;
+  font-family:var(--font-title);font-size:clamp(3rem,6vw,4.4rem);line-height:1;color:var(--teal);
+}
+.stat-label{display:block;margin-top:.4rem;font-size:.95rem;line-height:1.45;color:#fff}
+
+/* sources / footnotes */
+.sources{font-size:.95rem;line-height:1.55;word-break:break-word}
+
+/* ---------- About us: team cards (photo, name, short info) ---------- */
+.team{display:grid;grid-template-columns:repeat(5,1fr);gap:1.25rem}
+@media (max-width:1000px){
+  .team{grid-template-columns:repeat(2,1fr)}
+}
+.member{
+  display:flex;flex-direction:column;
+  background:linear-gradient(180deg,rgba(166,32,35,.35),rgba(0,0,0,.9) 55%);
+  border:1px solid rgba(255,16,24,.45);
+  transition:border-color .2s,box-shadow .2s;
+}
+.member:hover{border-color:var(--teal);box-shadow:0 0 14px rgba(0,217,160,.35)}
+.member img{
+  display:block;width:100%;aspect-ratio:1;object-fit:cover;
+  background:var(--slate);border-bottom:4px solid var(--red-bright);
+}
+.member-body{padding:1rem 1.1rem 1.3rem}
+.member h3{
+  margin:0;
+  font-family:var(--font-title);font-weight:400;
+  font-size:1.9rem;line-height:1;letter-spacing:.04em;text-transform:none;color:#fff;
+}
+.member .role{
+  margin-top:.4rem;
+  color:var(--red-bright);font-weight:800;font-size:.8rem;letter-spacing:.08em;text-transform:uppercase;
+}
+.member .bio{margin-top:.7rem;font-size:.95rem;line-height:1.6;color:#e6eaec}
+
+/* ---------- Buttons linking to other pages ---------- */
+.cta{display:flex;flex-wrap:wrap;gap:1rem;margin-top:1.5rem}
+.btn{
+  display:inline-block;padding:.85rem 1.8rem;
+  background-color:var(--red);
+  background-image:radial-gradient(rgba(255,255,255,.25) 1.5px,transparent 2px);
+  background-size:42px 42px;
+  color:#fff;text-decoration:none;
+  font-weight:800;letter-spacing:.08em;text-transform:uppercase;
+  transition:filter .2s,box-shadow .2s;
+}
+.btn.dark{background-color:var(--red-dark)}
+.btn:hover,.btn:focus-visible{filter:brightness(1.2);box-shadow:0 0 10px rgba(255,16,24,.6);outline:none}
+
+/* ---------- Small screens ---------- */
+@media (max-width:900px){
+  .layout-toc{grid-template-columns:minmax(0,1fr)}
+  .toc{position:static}
+  .toc ol{display:flex;flex-wrap:wrap;gap:.5rem}
+  .toc a{border:2px solid var(--slate);border-radius:999px;padding:.35rem .9rem}
+}
+@media (max-width:700px){
+  main{padding:1rem 1rem 3rem}
+  .prose figure.left,.prose figure.right{float:none;width:100%;margin:1rem 0}
+  .page-hero-text{padding:0 1rem .8rem}
+  /* team cards: photo beside the text so the list stays short on phones */
+  .team{grid-template-columns:1fr}
+  .member{flex-direction:row}
+  .member img{flex:none;width:120px;height:120px;align-self:flex-start;border-bottom:0;border-right:4px solid var(--red-bright)}
+  .member-body{flex:1;min-width:0;padding:.8rem 1rem 1rem}
+  .member h3{font-size:1.6rem}
+}
