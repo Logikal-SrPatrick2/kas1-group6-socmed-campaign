@@ -6,6 +6,7 @@
 <title>KAS | Homepage</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;800&family=Bebas+Neue&family=Special+Elite&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Righteous&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="./static/css/template.css">
 </head>
 <body>
@@ -36,8 +37,9 @@
         <section class="facts" aria-label="Facts">
           <img class="facts-bg" src="./static/img/HOME/Facts-HOME.png" alt="">
           <div class="facts-body">
-            <p class="facts-text">Lorem ipsum dolor sit amet consectetur adipiscing elit. Voluptas et in omnis veniam ea voluptatum est tempor consequat facilis est mollit. Ut quidem in sint id id. Expedita qui excepturi qui sit accusamus anim laboris.</p>
-            <a class="facts-more" href="#">MORE FACTS</a>
+            <p class="facts-text" aria-live="polite">This site examines how music was used to promote a distorted account of the Martial Law era, and how other songs answered it.</p>
+            <p class="facts-text" id="factText" aria-live="polite">The World Bank reports the economy contracted by 7.3% year-on-year in both 1984 and 1985, far from the &ldquo;new era of prosperity&rdquo; the songs promised.</p>
+            <a class="facts-more" href="./facts.html">MORE FACTS</a>
           </div>
         </section>
       </div>
@@ -55,9 +57,9 @@
               <span class="queue-badge" id="queueBadge" hidden>0</span>
             </button>
 
-            <a class="tile" href="#" aria-label="Lyrics">
+            <button type="button" class="tile" id="openLyrics" aria-label="Lyrics" aria-haspopup="dialog">
               <img src="./static/img/HOME/Lyrics-HOME.png" alt="">
-            </a>
+            </button>
           </div>
 
           <a class="educated" href="#">
@@ -159,6 +161,21 @@
   </div>
 </dialog>
 
+<dialog class="lyrics-dialog" id="lyricsDialog" aria-labelledby="lyricsTitle">
+  <div class="lyrics-inner">
+    <div class="lyrics-head">
+      <div>
+        <h2 id="lyricsTitle">LYRICS</h2>
+        <p class="lyrics-song" id="lyricsSong"></p>
+      </div>
+      <button type="button" class="songlist-close" id="closeLyrics" aria-label="Close lyrics">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round"><path d="M5 5l14 14M19 5 5 19"/></svg>
+      </button>
+    </div>
+    <div class="lyrics-text" id="lyricsText" tabindex="0"></div>
+  </div>
+</dialog>
+
 <footer class="bar">
   <img class="footer-logo" src="./static/img/Project_Logo.png" alt="">
   <div>Lorem ipsum dolor sit amet consectetur adipiscing elit.</div>
@@ -168,12 +185,203 @@
 <script>
 const COVER_DIR = "./static/img/";
 const songs = [
-  { title: "Masagana 99",           artist: "Levi Celerio | Felipe Padilla de Leon",              cover: "Masagana1.png",           audio: "./static/audio/Masagana-99 - Theme Song.mp3" },
-  { title: "Oy Utol, Buto’t Balat Ka Na’y Natutulog Ka Pa", artist: "Heber Bartolome",            cover: "Oy Utol1.png",            audio: "./static/audio/Oy Utol, Buto't Balat Ka Na'y Natutulog Ka Pa.mp3" },
-  { title: "Saranggola ni Pepe",    artist: "Celeste Legaspi",                                    cover: "Saranggola ni Pepe1.png", audio: "./static/audio/Saranggola Ni Pepe.mp3" },
-  { title: "Bagong Pagsilang",      artist: "Gene Generoso | Emil Mijares | The Entrolezos",      cover: "BagongPagsilang1.png",    audio: "./static/audio/Bagong Pagsilang.mp3" },
-  { title: "Halina",                artist: "Jess Santiago",                                      cover: "Halina1.png",             audio: "./static/audio/Halina.mp3" },
-  { title: "Martsa ng Bayan",       artist: "Jess Santiago",                                      cover: "Martsa ng Bayan1.png",    audio: "./static/audio/Martsa ng Bayan.mp3" }
+  { title: "Masagana 99",           artist: "Levi Celerio | Felipe Padilla de Leon",              cover: "Masagana1.png",           audio: "./static/audio/Masagana-99 - Theme Song.mp3",
+    lyrics: `Ang diwa ng bayanihan,
+lumaganap sa mga palayan.
+Magsasaka'y nagsama-sama,
+pinasibol ang pag-asa.
+
+Ang Luzon at ang Visayas,
+pati na nga sa Mindanao,
+nilinang ang mga lupa;
+pinagyaman bawat araw.
+
+Kaban-kaban na karagdagan
+ay nakamtan sa sakahan.
+Pati na rin ang buong bayan,
+nakibahagi sa kaunlaran.
+
+Paunlarin natin ang palayan
+sa makabagong paraan.
+Makisapi sa kilusan.
+Masagana-99!`
+  },
+  { title: "Oy Utol, Buto’t Balat Ka Na’y Natutulog Ka Pa", artist: "Heber Bartolome",            cover: "Oy Utol1.png",            audio: "./static/audio/Oy Utol, Buto't Balat Ka Na'y Natutulog Ka Pa.mp3",
+    lyrics: `Masdan niyo ang ating paligid
+Akala mo'y walang ligalig
+May saya at mayro'ng awit
+Ngunit may namimilipit
+At siya'y humihibik
+
+Masdan niyo ang ating buhay
+Masdan niyo ang kapalaran
+Bakit may nahihirapan?
+Bakit may sumisigaw?
+
+Kay hirap nang tumawa
+kung hungkag ang 'yong tiyan
+Kay hirap nang mangusap
+kung bibig mo'y may tapal
+
+Kay hirap nang mabuhay
+kung kalagaya'y ganyan
+Kay hirap nang lumaban
+kung takot ka sa kalaban
+
+Ah ay
+Ah yay yay yay yay yay yay yay
+
+Walang tutulong
+Walang tutulong sa atin
+Walang pag-asa kundi ikaw at ako rin
+At kung tayo'y mananahimik at di kikilos
+Ang dapat sa atin ay tawaging mga g*go
+
+Di niyo ba nalalaman
+Kung bakit tayo'y nagkaganyan
+Bakit may nahihirapan
+Bakit may sumisigaw
+Bakit may namimilipit
+At sila'y humihibik
+
+Maging ako'y nahihirapan
+Kaya ngayo'y sumisigaw
+Sumisigaw!`
+  },
+  { title: "Saranggola ni Pepe",    artist: "Celeste Legaspi",                                    cover: "Saranggola ni Pepe1.png", audio: "./static/audio/Saranggola Ni Pepe.mp3",
+    lyrics: `Matayog ang lipad ng saranggola ni Pepe
+Matayog ang pangarap ng matandang bingi
+Umihip ang hangin, nawala sa paningin
+Sigaw ng kahapon, nilamon ng alon
+Malabo ang tunog ng kampanilya ni Padre
+Maingay ang taginting rosaryo ng babae
+
+Nay, nay, nay, nay
+Nay, nay, nay, nay
+Nay, nay, nay, nay
+Nay-
+
+Matayog ang lipad ng saranggola ni Pepe
+Matayog ang pangarap ng matandang bingi
+Hinuli ang ibon, pinagsuot ng pantalon
+Tinali ng pisi, hindi na nagsinturon
+Dumaan ang jeepney at gumuhit pa sa kalye
+Mauling ang iniwan, hindi na tinabi
+
+Nay, nay, nay, nay
+Nay, nay, nay, nay
+Nay, nay, nay, nay
+Nay-
+
+Matayog ang lipad ng saranggola ni Pepe
+Matayog ang pangarap ng matandang bingi
+Pinilit umawit ang naglaro'y isang ingit
+Lumuha ang langit at ang mundo ay nanliit
+Kumakaway sa bakod ang anghel na nakatanod
+Sumusuway sa utos puso'y sinusunod
+
+Nay, nay, nay, nay
+Nay, nay, nay, nay
+Nay, nay, nay, nay
+Nay-`
+  },
+  { title: "Bagong Pagsilang",      artist: "Gene Generoso | Emil Mijares | The Entrolezos",      cover: "BagongPagsilang1.png",    audio: "./static/audio/Bagong Pagsilang.mp3",
+    lyrics: `May bagong silang.
+May bago nang buhay,
+Bagong bansa, bagong galaw
+Sa Bagong Lipunan!
+Magbabago ang lahat, tungo sa pag-unlad,
+At ating itanghal: Bagong Lipunan!
+
+May bagong silang.
+May bago nang buhay,
+Bagong bansa, bagong galaw
+Sa Bagong Lipunan!
+Magbabago ang lahat, tungo sa pag-unlad,
+At ating itanghal: Bagong Lipunan!
+
+Ang gabi'y nagmaliw nang ganap,
+At lumipas na ang magdamag.
+Madaling araw ay nagdiriwang.
+May umagang namasdan.
+Ngumiti na ang pag-asa
+Sa umagang anong ganda!
+
+May bagong silang.
+May bago nang buhay,
+Bagong bansa, bagong galaw
+Sa Bagong Lipunan!
+Magbabago ang lahat, tungo sa pag-unlad,
+At ating itanghal: Bagong Lipunan!`
+  },
+  { title: "Halina",                artist: "Jess Santiago",                                      cover: "Halina1.png",             audio: "./static/audio/Halina.mp3",
+    lyrics: `Si Lina ay isang magandang dalaga
+Panggabi sa isang pabrika ng tela
+Sumapi sa union, sumama sa welga
+Biglang nagkagulo, nawala si Lina
+Nang muling makita’y hubad at patay na
+
+Halina, halina
+Damitan ang bangkay at sa ating puso’y
+Hayaang humimlay si Lina.
+
+Isang magsasaka si Pedro Pilapil
+Walang kaulayaw kundi ang bukirin
+Ngunit isang araw, may biglang dumating
+Ang saka ni Pedro’y kanilang inangkin
+Tumutol si Pedro, at siya ay binaril
+
+Halina, halina
+At sa ating puso’y hayaang maghasik
+Ng punla si Pedro Pilapil.
+
+Sina Aling Maria’y doon nakatira
+Sa tabi ng isang bundok ng basura
+Ngunit isang araw binulldozer sila
+Sapagkat darating ang mga turista
+Nawalan ng bahay ang isang pamilya
+
+Halina, halina
+At sa ating puso’y ipagtayo ng tahanan
+Sina aling Maria.
+Halina, halina.`
+  },
+  { title: "Martsa ng Bayan",       artist: "Jess Santiago",                                      cover: "Martsa ng Bayan1.png",    audio: "./static/audio/Martsa ng Bayan.mp3",
+    lyrics: `Manggagawa at magsasaka,
+Kabataan at propesyonal,
+Mga alagad ng simbahan,
+Negosyante at pinunong makabayan!
+Tayo na at magkapit-bisig!
+Tapusin ang daang-taong pananahimik!
+Panahon na upang ang ating tinig
+Ay marinig sa buong daigdig!
+
+Tayo na at magsama-sama
+Sa pagdurog sa imperyalista!
+Tayo na at magka-isa,
+Lansagin ang pasistang diktadura!
+Nasa atin ang tunay na lakas!
+Tiyak nasa atin ang bukas!
+
+Manggagawa at magsasaka,
+Kabataan at propesyonal,
+Mga alagad ng simbahan,
+Negosyante at pinunong makabayan!
+Tayo na at magkapit-bisig!
+Tapusin ang daang-taong pananahimik!
+Panahon na upang ang ating tinig
+Ay marinig sa buong daigdig!
+
+Tayo na at magsama-sama
+Sa pagdurog sa imperyalista!
+Tayo na at magka-isa,
+Lansagin ang pasistang diktadura!
+Nasa atin ang tunay na lakas!
+Tiyak nasa atin ang bukas!
+
+Tayo na at magka-isa
+Isulong ang pambansang demokrasya!`
+  }
 ];
 
 const dlg = document.getElementById("songList");
@@ -249,6 +457,28 @@ function setSong(i, autoplay){
   if (autoplay) setPlaying(true);
   markCurrent();
   renderQueue();
+  renderLyrics();
+}
+
+// ---------- lyrics pop-up (lyrics are stored in the songs list above) ----------
+const lyricsDlg = document.getElementById("lyricsDialog");
+const lyricsText = document.getElementById("lyricsText");
+const lyricsSong = document.getElementById("lyricsSong");
+
+function lyricsFor(song){
+  return song.lyrics || "Lyrics are not available yet.";
+}
+
+function renderLyrics(){
+  const s = songs[current];
+  lyricsSong.textContent = s.title + " — " + s.artist;
+  lyricsText.replaceChildren();
+  lyricsFor(s).split("\n").forEach(line => {
+    const span = document.createElement("span");
+    span.textContent = line || " ";
+    lyricsText.appendChild(span);
+  });
+  lyricsText.scrollTop = 0;
 }
 
 function goNext(autoplay){
@@ -466,6 +696,13 @@ document.getElementById("closeQueue").addEventListener("click", () => queueDlg.c
 queueDlg.addEventListener("click", e => { if (e.target === queueDlg) queueDlg.close(); });
 clearQueueBtn.addEventListener("click", clearQueue);
 
+document.getElementById("openLyrics").addEventListener("click", () => {
+  lyricsText.scrollTop = 0;
+  lyricsDlg.showModal();
+});
+document.getElementById("closeLyrics").addEventListener("click", () => lyricsDlg.close());
+lyricsDlg.addEventListener("click", e => { if (e.target === lyricsDlg) lyricsDlg.close(); });
+
 document.getElementById("listenNow").addEventListener("click", () => {
   let i = current;
   if (songs.length > 1) {
@@ -557,6 +794,36 @@ shareForm.addEventListener("submit", e => {
   shareInput.value = "";
 });
 
+// ---------- random fact (new one on every refresh) ----------
+// Short versions of the facts on facts.html
+const FACTS = [
+  "The World Bank reports the economy contracted by 7.3% year-on-year in both 1984 and 1985, far from the “new era of prosperity” the songs promised.",
+  "Bagong Pagsilang was commissioned for the Kilusang Bagong Lipunan in 1972 and played daily on all television and radio stations.",
+  "Masagana 99 aimed to raise rice yields from 40 to 99 cavans per hectare. Self-sufficiency came in 1975–1976, but it was short-lived.",
+  "Costly subsidies and poor loan repayment under Masagana 99 led to the insolvency of an estimated 800 rural banks.",
+  "After martial law was declared, privately owned media were shut down or seized, and assemblies, strikes and political expression were restricted.",
+  "Republic Act No. 10368 formally recognizes victims of summary execution, torture and enforced disappearance under the Marcos regime (1972–1986).",
+  "Researchers describe Marcos as using music as part of the state’s cultural apparatus to keep his grip on the country and hide his ambition for perpetual rule.",
+  "“Oy Utol, Buto’t Balat Ka Na’y Natutulog Ka Pa” describes the hunger, silence and fear of the martial law years, the opposite of what the New Society promised.",
+  "Behind its cheery melody, “Saranggola ni Pepe” alludes to the silencing of the press and dissent under martial law.",
+  "“Halina” questions whether the state’s promise of order and security applied equally to workers, farmers and poor communities.",
+  "“Martsa ng Bayan” calls for collective action against dictatorship, contradicting the idea that Filipinos uniformly accepted Marcos’ rule."
+];
+
+function showRandomFact(){
+  const el = document.getElementById("factText");
+  if (!el || !FACTS.length) return;
+  let last = -1;
+  try { last = parseInt(sessionStorage.getItem("lastFact"), 10); } catch (e) {}
+  let i = Math.floor(Math.random() * FACTS.length);
+  if (FACTS.length > 1) {
+    while (i === last) i = Math.floor(Math.random() * FACTS.length); // never the same fact twice in a row
+  }
+  try { sessionStorage.setItem("lastFact", String(i)); } catch (e) {}
+  el.textContent = FACTS[i];
+}
+
+showRandomFact();
 buildList();
 setSong(0, false);
 updateVolumeUI();

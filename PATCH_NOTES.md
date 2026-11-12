@@ -172,6 +172,24 @@
 
 - Resolved conflicts and removed search bars except for song playing
 
+### ALPHA v0.17.5
+
+- Added actual song playing
+
 ### ALPHA v0.18.0
 
+- Added lyrics to home.html
+- Added random facts
+- Fixed resizing in home.html
+
+### ALPHA v0.18.1
+
+- Added contextual text to home.html
+
+### ALPHA v0.19.0
+
 - Added lyrics annotation (incomplete)
+
+### ALPHA v0.19.1
+
+- Resolved Conflicts

@@ -1,11 +1,3 @@
-/* KAS | Song Player
-   ------------------------------------------------------------
-   TO CHANGE A SONG: edit its block below.
-   TO ADD A SONG:    copy a block, paste it at the end, change the text.
-   Open a song with the page address, e.g.  song-player.html?song=4
-   (0 = first song in this list, 1 = second, ...). Same order as the
-   song-selection page.
-   ------------------------------------------------------------ */
 const songs = [
   {
     title: "Bagong Pagsilang",
@@ -13,7 +5,7 @@ const songs = [
     cover: "./static/img/BagongPagsilang1.png", // album cover image
     released: "1973", // release year
     info: "Bagong Pagsilang demonstrates how the Marcos administration wanted Filipinos to perceive the New Society. Its lyrics establish the government's promise, not proof that the promise was fulfilled.",
-    audio: "",
+    audio: "./static/audio/Bagong Pagsilang.mp3",
     lyrics: `May bagong silang.
 May bago nang buhay,
 Bagong bansa, bagong galaw
@@ -86,7 +78,7 @@ The lyrics personify hope as something that has returned to the country. The bea
     cover: "./static/img/Masagana1.png",
     released: "1973",
     info: "The Masagana-99 jingle is how the government promoted its agricultural policy. It shows how development was communicated through music, but it cannot independently establish the program's success. ",
-    audio: "",
+    audio: "./static/audio/Masagana-99 - Theme Song.mp3",
     lyrics: `Ang diwa ng bayanihan,
 lumaganap sa mga palayan.
 Magsasaka'y nagsama-sama,
@@ -113,7 +105,7 @@ Masagana-99!`,
     cover: "./static/img/Oy Utol1.png",
     released: "1973",
     info: "While the government-sponsored song announces a new and hopeful society, Bartolome asks listeners to look at the suffering that may exist behind the appearance of happiness. Its strongest historical contribution is documenting a contemporary artist's critical perspective on hunger, fear, repression, and public silence.",
-    audio: "",
+    audio: "./static/audio/Oy Utol, Buto't Balat Ka Na'y Natutulog Ka Pa.mp3",
     lyrics: `Masdan niyo ang ating paligid
 Akala mo'y walang ligalig
 May saya at mayro'ng awit
@@ -161,7 +153,7 @@ Sumisigaw!`,
     cover: "./static/img/Saranggola ni Pepe1.png",
     released: "1977",
     info: "Saranggola ni Pepe shows how political criticism could be communicated indirectly through metaphor. Using surreal and seemingly playful imagery. Its lyrics can be interpreted as a reflection on authoritarianism, silencing, and the suppression of individual expression. ",
-    audio: "",
+    audio: "./static/audio/Saranggola Ni Pepe.mp3",
     lyrics: `Matayog ang lipad ng saranggola ni Pepe
 Matayog ang pangarap ng matandang bingi
 Umihip ang hangin, nawala sa paningin
@@ -204,7 +196,7 @@ Nay-`,
     cover: "./static/img/Halina1.png",
     released: "Late 1970s",
     info: "Halina presents three different social experiences: labor exploitation, agrarian injustice, and urban displacement. It directly challenges the idea that the New Society's promise of progress was experienced equally by all Filipinos.",
-    audio: "",
+    audio: "./static/audio/Halina.mp3",
     lyrics: `Si Lina ay isang magandang dalaga
 Panggabi sa isang pabrika ng tela
 Sumapi sa union, sumama sa welga
@@ -242,7 +234,7 @@ Halina, halina.`,
     cover: "./static/img/Martsa ng Bayan1.png",
     released: "Early 1980s",
     info: "The song was composed in the 1980s and became an anti-dictatorship protest anthem. It was performed during protest activities and was associated with calls for collective action involving different sectors and political visions against the Marcos regime. ",
-    audio: "",
+    audio: "./static/audio/Martsa ng Bayan.mp3",
     lyrics: `Manggagawa at magsasaka,
 Kabataan at propesyonal,
 Mga alagad ng simbahan,
