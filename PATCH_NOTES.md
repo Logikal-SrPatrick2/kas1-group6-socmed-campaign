@@ -159,8 +159,11 @@
 ### ALPHA v0.17.1
 
 - Updated about us
--
 
 ### ALPHA v0.17.2
 
 - Updated about us (Quiza)
+
+### ALPHA v0.17.3
+
+- Fixed `PATCH_NOTES.md` format
