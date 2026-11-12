@@ -114,3 +114,6 @@
 
 - Removed home button
 - Replace placeholder logo with clickable logo
+
+### PRE-ALPHA 0.13.1
+- Fix logo not sizing properly

@@ -506,9 +506,7 @@ main{
   transform:scale(1.08);
   outline:none;
 }
-/* ===== QUEUE ===== */
 
-/* Playlist tile is now a <button>, so reset the default button look */
 button.tile{
   width:100%;
   height:100%;
@@ -521,7 +519,6 @@ button.tile{
   cursor:pointer;
 }
 
-/* Count badge on the queue tile */
 .queue-badge{
   position:absolute;
   top:4%;
@@ -543,7 +540,6 @@ button.tile{
 }
 .queue-badge[hidden]{display:none}
 
-/* Header: CLEAR + close side by side */
 .songlist-head-actions{
   display:flex;
   align-items:center;
@@ -569,7 +565,6 @@ button.tile{
 }
 .queue-clear:disabled{opacity:.3;cursor:default}
 
-/* Section headings: NOW PLAYING / NEXT IN QUEUE */
 .queue-heading{
   font-family:var(--font-title);
   font-weight:400;
@@ -587,7 +582,6 @@ button.tile{
   color:rgba(255,255,255,.6);
 }
 
-/* Row buttons (shared by Song List "+ QUEUE" and Queue "remove") */
 .songrow-actions{
   display:flex;
   align-items:center;
@@ -651,7 +645,6 @@ button.tile{
   .songrow{gap:.5rem}
 }
 
-/* ===== QUEUE: drag to reorder ===== */
 .songrow-main{
   display:flex;
   align-items:center;
@@ -696,12 +689,10 @@ button.tile{
   color:var(--teal);
 }
 
-/* ===== Header logo (replaces the eye in the top bar) ===== */
 .logo{display:block;flex:none;line-height:0}
 .logo img{display:block;height:52px;width:auto}
 .logo:hover img,
 .logo:focus-visible img{filter:drop-shadow(0 0 8px var(--teal))}
 .logo:focus-visible{outline:none}
 
-/* ===== Footer logo (not clickable) ===== */
 .footer-logo{display:block;height:48px;width:auto;margin:0 auto .4rem}

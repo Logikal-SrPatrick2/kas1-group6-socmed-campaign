@@ -41,9 +41,9 @@ footer small{display:block;margin-top:.35rem;font-weight:800}
 
 main{
   flex:1;position:relative;display:flex;flex-direction:column;align-items:center;
-  min-height:900px;         
+  min-height:900px;
   padding:3rem 0 5rem;
-  overflow-x:clip; 
+  overflow-x:clip;
   background:
     radial-gradient(ellipse at 50% 55%,rgba(107,0,0,.55),transparent 65%),
     linear-gradient(rgba(0,217,160,.12) 1px,transparent 1px),
@@ -62,7 +62,7 @@ h1{
   position:relative;width:100%;
   height:var(--card);
   margin-top:4rem;
-  margin-bottom:5rem;             
+  margin-bottom:5rem;
 }
 .card{
   position:absolute;top:0;left:50%;width:var(--card);aspect-ratio:1;
@@ -104,7 +104,7 @@ h1{
 .arrow.next{right:calc(50% - var(--card) / 2 - 130px)}
 
 .info{
-  position:relative;z-index:20;   
+  position:relative;z-index:20;
   text-align:center;margin-top:0;min-height:130px;
 }
 .info h2{font-family:var(--font-title);font-weight:400;font-size:clamp(2.4rem,6vw,4.5rem);line-height:1;letter-spacing:.02em}
@@ -123,12 +123,10 @@ h1{
   .card{transition:none}.info.swap{animation:none}
 }
 
-/* ===== Header logo (replaces the eye in the top bar) ===== */
 .logo{display:block;flex:none;line-height:0}
 .logo img{display:block;height:52px;width:auto}
 .logo:hover img,
 .logo:focus-visible img{filter:drop-shadow(0 0 8px var(--teal))}
 .logo:focus-visible{outline:none}
 
-/* ===== Footer logo (not clickable) ===== */
 .footer-logo{display:block;height:48px;width:auto;margin:0 auto .4rem}

@@ -54,7 +54,6 @@
               <img src="./static/img/HOME/Disc-HOME.png" alt="">
             </a>
 
-            <!-- QUEUE button (was the Playlist link) -->
             <button type="button" class="tile" id="openQueue" aria-label="Queue" aria-haspopup="dialog">
               <img src="./static/img/HOME/Playlist-HOME.png" alt="">
               <span class="queue-badge" id="queueBadge" hidden>0</span>
@@ -131,7 +130,6 @@
   </div>
 </main>
 
-<!-- SONG LIST dialog -->
 <dialog class="songlist" id="songList" aria-labelledby="songListTitle">
   <div class="songlist-head">
     <h2 id="songListTitle">SONG LIST</h2>
@@ -142,7 +140,6 @@
   <ol class="songlist-items" id="songItems"></ol>
 </dialog>
 
-<!-- QUEUE dialog (same look as the song list) -->
 <dialog class="songlist" id="queueDialog" aria-labelledby="queueTitle">
   <div class="songlist-head">
     <h2 id="queueTitle">QUEUE</h2>
@@ -204,8 +201,8 @@ const GRIP_ICON = '<svg viewBox="0 0 24 24" fill="currentColor"><circle cx="9" c
 
 let current = 0;
 let playing = false;
-const queue = [];   // song indexes, first = plays next
-const addBtns = []; // the "+" buttons in the song list, by song index
+const queue = [];
+const addBtns = [];
 
 function coverSrc(song){ return COVER_DIR + encodeURI(song.cover); }
 
@@ -233,7 +230,6 @@ function markCurrent(){
   });
 }
 
-/* ---------- shared row text (title + artist) ---------- */
 function songText(s){
   const text = document.createElement("span");
   text.className = "songrow-text";
@@ -245,7 +241,6 @@ function songText(s){
   return text;
 }
 
-/* ---------- SONG LIST ---------- */
 function buildList(){
   songs.forEach((s, i) => {
     const li = document.createElement("li");
@@ -277,7 +272,6 @@ function buildList(){
   markCurrent();
 }
 
-// "+" when the song can be added, "✓" (disabled) when it's already in the queue
 function updateAddButtons(){
   addBtns.forEach((btn, i) => {
     const inQueue = queue.includes(i);
@@ -290,9 +284,8 @@ function updateAddButtons(){
   });
 }
 
-/* ---------- QUEUE ---------- */
 function addToQueue(i){
-  if (queue.includes(i)) return; // no duplicates
+  if (queue.includes(i)) return;
   queue.push(i);
   renderQueue();
 }
@@ -323,7 +316,6 @@ function focusGrip(pos){
   if (row) row.querySelector(".songrow-grip").focus();
 }
 
-/* ---------- drag to reorder (mouse, touch, pen) ---------- */
 function startDrag(e, li){
   if (e.pointerType === "mouse" && e.button !== 0) return;
   e.preventDefault();
@@ -341,12 +333,10 @@ function startDrag(e, li){
   rows.forEach(r => { if (r !== li) r.classList.add("is-shifting"); });
 
   const onMove = ev => {
-    // keep the dragged row inside the list
     const dy = Math.max(-from * h, Math.min((rows.length - 1 - from) * h, ev.clientY - startY));
     li.style.transform = "translateY(" + dy + "px)";
     to = Math.max(0, Math.min(rows.length - 1, from + Math.round(dy / h)));
 
-    // slide the other rows out of the way
     rows.forEach((r, k) => {
       if (r === li) return;
       let shift = 0;
@@ -361,7 +351,7 @@ function startDrag(e, li){
     handle.removeEventListener("pointerup", end);
     handle.removeEventListener("pointercancel", end);
     if (ev.type === "pointerup" && to !== from) moveInQueue(from, to);
-    else renderQueue(); // cancelled or dropped in place: reset the rows
+    else renderQueue();
   };
 
   handle.addEventListener("pointermove", onMove);
@@ -370,14 +360,12 @@ function startDrag(e, li){
 }
 
 function renderQueue(){
-  // now playing row
   queueNow.replaceChildren();
   const nowLi = document.createElement("li");
   nowLi.className = "songrow is-current";
   nowLi.appendChild(songText(songs[current]));
   queueNow.appendChild(nowLi);
 
-  // upcoming rows
   queueItems.replaceChildren();
   queue.forEach((songIndex, pos) => {
     const s = songs[songIndex];
@@ -437,7 +425,6 @@ function renderQueue(){
   updateAddButtons();
 }
 
-/* ---------- events ---------- */
 document.getElementById("openSongList").addEventListener("click", () => dlg.showModal());
 document.getElementById("closeSongList").addEventListener("click", () => dlg.close());
 dlg.addEventListener("click", e => { if (e.target === dlg) dlg.close(); });
@@ -459,7 +446,6 @@ document.getElementById("btnShuffle").addEventListener("click", () => {
   setSong(Math.floor(Math.random() * songs.length), true);
 });
 document.getElementById("btnPrev").addEventListener("click", () => setSong(current - 1, playing));
-// Next plays the first queued song if there is one, otherwise the next song in the list
 document.getElementById("btnNext").addEventListener("click", () => {
   if (queue.length) setSong(queue.shift(), playing);
   else setSong(current + 1, playing);
