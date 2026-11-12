@@ -193,3 +193,7 @@
 ### ALPHA v0.19.1
 
 - Resolved Conflicts
+
+### ALPHA v0.19.2
+
+- Edited about-us
