@@ -25,7 +25,13 @@ const cards = songs.map((s, i) => {
   b.innerHTML = s.cover
     ? `<img class="cover" src="${s.cover}" alt="">`
     : `<div class="cover">${s.title}</div>`;
-  b.addEventListener('click', () => select(i));
+  b.addEventListener('click', () => {
+  if (i === index) {
+    location.href = `./song-player.html?song=${i}`;
+  } else {
+    select(i);
+  }
+});
   carousel.appendChild(b);
   return b;
 });

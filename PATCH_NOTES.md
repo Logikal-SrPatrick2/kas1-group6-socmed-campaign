@@ -118,6 +118,11 @@
 ### PRE-ALPHA 0.13.1
 - Fix logo not sizing properly
 
-### PRE-ALPHA 0.14
+### PRE-ALPHA 0.14.0
 - Fix song-player resizing handling
 - Added temporary share clear
+
+### ALPHA v0.15.0
+- Removed spare home html
+- Updated template html to home html
+- Connected every html to one another (including song selection to song player)

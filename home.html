@@ -1,61 +1,470 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Detecting Device...</title>
-
-  <!-- Open Graph Tags -->
-  <meta property="og:title" content="Join Our Campaign!">
-  <meta property="og:description" content="Lorem ipsum dolor sit amet, consectetur adipiscing elit.">
-  <meta property="og:image" content="./preview.jpg">
-
-  <link rel="stylesheet" href="./static/css/style.css">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>KAS | Homepage</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;800&family=Bebas+Neue&family=Special+Elite&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="./static/css/template.css">
 </head>
 <body>
 
-  <!-- Navigation / Header -->
-  <header class="navbar">
-    <div class="container">
-      <h1 class="logo">logo should actually be here tanginamo</h1>
-    </div>
-  </header>
+<header class="bar">
+  <a class="logo" href="./home.html" aria-label="Home"><img src="./static/img/Project_Logo.png" alt="Project logo"></a>
+  <nav aria-label="Main">
+    <a href="#">ABOUT US</a><a href="#">FACTS</a><a href="#">SETTINGS</a>
+  </nav>
+  <form class="search" role="search" onsubmit="return false">
+    <input type="search" aria-label="Search songs" id="q">
+    <button type="submit" aria-label="Search"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="10" cy="10" r="7"/><path d="m15 15 6 6"/></svg></button>
+  </form>
+</header>
 
-  <!-- Hero Section -->
-  <section class="hero">
-    <div class="container">
-      <h2 id="hero-heading">Detecting Device...</h2>
-      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
-      <button id="cta-btn" class="btn">Take Action</button>
-      <a href="./audio-test.html" class="btn">Go to Audio Test</a>
-      <a href="./song-selection.html" class="btn">Go to Song Selection</a>
-    </div>
-  </section>
+<main>
+  <div class="page">
 
-  <!-- Content Grid Section -->
-  <section class="campaign-info">
-    <div class="container grid">
-      <div class="card">
-        <h3>Consectetur</h3>
-        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer nec odio. Praesent libero.</p>
+    <section class="banner">
+      <img src="./static/img/HOME/Marcos-HOME.png" alt="">
+    </section>
+
+    <section class="hero">
+
+      <div class="left">
+        <div class="intro">
+          <img class="title" src="./static/img/HOME/MartialLaw-HOME.png" alt="Martial Law">
+        </div>
+
+        <h2 class="subtitle">PLACEHOLDER</h2>
+
+        <section class="facts" aria-label="Facts">
+          <img class="facts-bg" src="./static/img/HOME/Facts-HOME.png" alt="">
+          <div class="facts-body">
+            <p class="facts-text">Lorem ipsum dolor sit amet consectetur adipiscing elit. Voluptas et in omnis veniam ea voluptatum est tempor consequat facilis est mollit. Ut quidem in sint id id. Expedita qui excepturi qui sit accusamus anim laboris.</p>
+            <a class="facts-more" href="#">MORE FACTS</a>
+          </div>
+        </section>
       </div>
-      <div class="card">
-        <h3>Adipiscing</h3>
-        <p>Sed cursus ante dapibus diam. Sed nisi. Nulla quis sem at nibh elementum imperdiet.</p>
-      </div>
-      <div class="card">
-        <h3>Eiusmod</h3>
-        <p>Duis sagittis ipsum. Praesent mauris. Fusce nec tellus sed augue semper porta.</p>
-      </div>
-    </div>
-  </section>
 
-  <footer>
-    <div class="container">
-      <p>&copy; 2026 Lorem Ipsum. All rights reserved.</p>
-    </div>
-  </footer>
+      <div class="panel">
 
-  <script src="./static/js/script.js"></script>
+        <div class="top">
+          <div class="tiles">
+            <a class="tile" href="./song-selection.html" aria-label="Song list">
+              <img src="./static/img/HOME/Disc-HOME.png" alt="">
+            </a>
+
+            <button type="button" class="tile" id="openQueue" aria-label="Queue" aria-haspopup="dialog">
+              <img src="./static/img/HOME/Playlist-HOME.png" alt="">
+              <span class="queue-badge" id="queueBadge" hidden>0</span>
+            </button>
+
+            <a class="tile" href="#" aria-label="Lyrics">
+              <img src="./static/img/HOME/Lyrics-HOME.png" alt="">
+            </a>
+          </div>
+
+          <a class="educated" href="#">
+            <img src="./static/img/HOME/Educated-HOME.png" alt="Are you educated enough?">
+          </a>
+        </div>
+
+        <section class="recent" aria-label="Recently played">
+          <img class="recent-bg" src="./static/img/HOME/RecentlyBG-HOME.png" alt="">
+
+          <div class="recent-body">
+            <h2 class="recent-label">RECENTLY PLAYED</h2>
+
+            <img class="recent-cover" id="nowCover" src="./static/img/Masagana1.png" alt="Masagana 99 cover">
+
+            <div class="meta">
+              <p class="song" id="nowTitle">Masagana 99</p>
+              <p class="artist" id="nowArtist"></p>
+            </div>
+
+            <div class="progress" role="progressbar" aria-label="Song progress" aria-valuemin="0" aria-valuemax="100" aria-valuenow="11">
+              <span class="knob"></span>
+            </div>
+
+            <div class="controls">
+              <button type="button" class="ctl" aria-label="Shuffle" id="btnShuffle">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M16 3h5v5M4 20 21 3M21 16v5h-5M15 15l6 6M4 4l5 5"/></svg>
+              </button>
+              <button type="button" class="ctl" aria-label="Previous" id="btnPrev">
+                <svg viewBox="0 0 24 24" fill="currentColor" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 20 9 12l10-8z"/><path d="M5 19V5" fill="none" stroke-width="3"/></svg>
+              </button>
+              <button type="button" class="ctl play" aria-label="Play" id="btnPlay">
+                <svg viewBox="0 0 24 24" fill="currentColor"><path id="playIcon" d="M8 5v14l11-7z"/></svg>
+              </button>
+              <button type="button" class="ctl" aria-label="Next" id="btnNext">
+                <svg viewBox="0 0 24 24" fill="currentColor" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 4l10 8-10 8z"/><path d="M19 5v14" fill="none" stroke-width="3"/></svg>
+              </button>
+              <button type="button" class="ctl" aria-label="Repeat">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="m17 2 4 4-4 4"/><path d="M3 11v-1a4 4 0 0 1 4-4h14"/><path d="m7 22-4-4 4-4"/><path d="M21 13v1a4 4 0 0 1-4 4H3"/></svg>
+              </button>
+              <button type="button" class="ctl" aria-label="Volume">
+                <svg viewBox="0 0 24 24" fill="currentColor" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M11 5 6 9H2v6h4l5 4z"/><path d="M15.5 8.5a5 5 0 0 1 0 7M19 5a10 10 0 0 1 0 14" fill="none"/></svg>
+              </button>
+            </div>
+          </div>
+        </section>
+
+        <div class="actions">
+          <button type="button" id="listenNow"><img src="./static/img/HOME/Listen-HOME.png" alt="Listen now"></button>
+          <button type="button" id="openSongList" aria-haspopup="dialog"><img src="./static/img/HOME/SongList-HOME.png" alt="Song list"></button>
+        </div>
+
+        <section class="share" aria-label="Share your favorite song">
+          <img class="share-bg" src="./static/img/HOME/Share-HOME.png" alt="">
+          <form class="share-form" id="shareForm">
+            <input class="share-input" id="shareInput" type="text" aria-label="Share your favorite song from Martial Law" autocomplete="off">
+            <button class="share-send" type="submit" aria-label="Send">
+              <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M21.5 3.2 2.7 10.6c-.8.3-.8 1.4 0 1.7l4.6 1.7 1.8 5.5c.2.6 1 .8 1.5.3l2.5-2.4 4.5 3.3c.6.4 1.4.1 1.5-.6L22.7 4.4c.2-.8-.5-1.5-1.2-1.2ZM9 13.2l8.6-5.6-6.7 7.3-.3 3.2L9 13.2Z"/></svg>
+            </button>
+          </form>
+        </section>
+
+      </div>
+    </section>
+
+  </div>
+</main>
+
+<dialog class="songlist" id="songList" aria-labelledby="songListTitle">
+  <div class="songlist-head">
+    <h2 id="songListTitle">SONG LIST</h2>
+    <button type="button" class="songlist-close" id="closeSongList" aria-label="Close song list">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round"><path d="M5 5l14 14M19 5 5 19"/></svg>
+    </button>
+  </div>
+  <ol class="songlist-items" id="songItems"></ol>
+</dialog>
+
+<dialog class="songlist" id="queueDialog" aria-labelledby="queueTitle">
+  <div class="songlist-head">
+    <h2 id="queueTitle">QUEUE</h2>
+    <div class="songlist-head-actions">
+      <button type="button" class="queue-clear" id="clearQueue">CLEAR</button>
+      <button type="button" class="songlist-close" id="closeQueue" aria-label="Close queue">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round"><path d="M5 5l14 14M19 5 5 19"/></svg>
+      </button>
+    </div>
+  </div>
+  <div class="songlist-items">
+    <h3 class="queue-heading">NOW PLAYING</h3>
+    <ol class="queue-rows" id="queueNow"></ol>
+
+    <h3 class="queue-heading">NEXT IN QUEUE</h3>
+    <ol class="queue-rows" id="queueItems"></ol>
+    <p class="queue-empty" id="queueEmpty">Your queue is empty. Add songs from the Song List with +.</p>
+  </div>
+</dialog>
+
+<footer class="bar">
+  <img class="footer-logo" src="./static/img/Project_Logo.png" alt="">
+  <div>Lorem ipsum dolor sit amet consectetur adipiscing elit.</div>
+  <small>&copy; 2026 kasgrp6. All rights reserved.</small>
+</footer>
+
+<script>
+const COVER_DIR = "./static/img/";
+const songs = [
+  { title: "Masagana 99",           artist: "",                 cover: "Masagana1.png" },
+  { title: "Pasakalye sa 'Oy Utol", artist: "Heber Bartolome",  cover: "Oy Utol1.png" },
+  { title: "Pirapirasong Balita",   artist: "Heber Bartolome",  cover: "Pirapirasong Balita1.png" },
+  { title: "Saranggola ni Pepe",    artist: "Celeste Legaspi",  cover: "Saranggola ni Pepe1.png" },
+  { title: "Bagong Pagsilang",      artist: "",                 cover: "BagongPagsilang1.png" },
+  { title: "Halina",                artist: "Jess Santiago",    cover: "Halina1.png" },
+  { title: "Martsa ng Bayan",       artist: "Jess Santiago",    cover: "Martsa ng Bayan1.png" }
+];
+
+const dlg = document.getElementById("songList");
+const list = document.getElementById("songItems");
+const nowCover = document.getElementById("nowCover");
+const nowTitle = document.getElementById("nowTitle");
+const nowArtist = document.getElementById("nowArtist");
+const btnPlay = document.getElementById("btnPlay");
+const playIcon = document.getElementById("playIcon");
+
+const queueDlg = document.getElementById("queueDialog");
+const queueNow = document.getElementById("queueNow");
+const queueItems = document.getElementById("queueItems");
+const queueEmpty = document.getElementById("queueEmpty");
+const queueBadge = document.getElementById("queueBadge");
+const openQueueBtn = document.getElementById("openQueue");
+const clearQueueBtn = document.getElementById("clearQueue");
+
+const PLAY_PATH = "M8 5v14l11-7z";
+const PAUSE_PATH = "M7 5h4v14H7zM13 5h4v14h-4z";
+const X_ICON = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round"><path d="M5 5l14 14M19 5 5 19"/></svg>';
+const GRIP_ICON = '<svg viewBox="0 0 24 24" fill="currentColor"><circle cx="9" cy="6" r="1.8"/><circle cx="15" cy="6" r="1.8"/><circle cx="9" cy="12" r="1.8"/><circle cx="15" cy="12" r="1.8"/><circle cx="9" cy="18" r="1.8"/><circle cx="15" cy="18" r="1.8"/></svg>';
+
+let current = 0;
+let playing = false;
+const queue = [];
+const addBtns = [];
+
+function coverSrc(song){ return COVER_DIR + encodeURI(song.cover); }
+
+function setPlaying(state){
+  playing = state;
+  playIcon.setAttribute("d", playing ? PAUSE_PATH : PLAY_PATH);
+  btnPlay.setAttribute("aria-label", playing ? "Pause" : "Play");
+}
+
+function setSong(i, autoplay){
+  current = (i + songs.length) % songs.length;
+  const s = songs[current];
+  nowCover.src = coverSrc(s);
+  nowCover.alt = s.title + " cover";
+  nowTitle.textContent = s.title;
+  nowArtist.textContent = s.artist;
+  if (autoplay) setPlaying(true);
+  markCurrent();
+  renderQueue();
+}
+
+function markCurrent(){
+  list.querySelectorAll(".songrow").forEach((row, i) => {
+    row.classList.toggle("is-current", i === current);
+  });
+}
+
+function songText(s){
+  const text = document.createElement("span");
+  text.className = "songrow-text";
+  const t = document.createElement("strong");
+  t.textContent = s.title;
+  const a = document.createElement("em");
+  a.textContent = s.artist;
+  text.append(t, a);
+  return text;
+}
+
+function buildList(){
+  songs.forEach((s, i) => {
+    const li = document.createElement("li");
+    li.className = "songrow";
+
+    const actions = document.createElement("div");
+    actions.className = "songrow-actions";
+
+    const q = document.createElement("button");
+    q.type = "button";
+    q.className = "songrow-queue";
+    q.addEventListener("click", () => addToQueue(i));
+    addBtns[i] = q;
+
+    const b = document.createElement("button");
+    b.type = "button";
+    b.className = "songrow-play";
+    b.textContent = "PLAY";
+    b.setAttribute("aria-label", "Play " + s.title);
+    b.addEventListener("click", () => {
+      setSong(i, true);
+      dlg.close();
+    });
+
+    actions.append(q, b);
+    li.append(songText(s), actions);
+    list.appendChild(li);
+  });
+  markCurrent();
+}
+
+function updateAddButtons(){
+  addBtns.forEach((btn, i) => {
+    const inQueue = queue.includes(i);
+    btn.textContent = inQueue ? "✓" : "+";
+    btn.disabled = inQueue;
+    btn.classList.toggle("is-added", inQueue);
+    btn.setAttribute("aria-label", inQueue
+      ? songs[i].title + " is already in the queue"
+      : "Add " + songs[i].title + " to queue");
+  });
+}
+
+function addToQueue(i){
+  if (queue.includes(i)) return;
+  queue.push(i);
+  renderQueue();
+}
+
+function removeFromQueue(pos){
+  queue.splice(pos, 1);
+  renderQueue();
+}
+
+function playFromQueue(pos){
+  const [i] = queue.splice(pos, 1);
+  setSong(i, true);
+}
+
+function clearQueue(){
+  queue.length = 0;
+  renderQueue();
+}
+
+function moveInQueue(from, to){
+  const [item] = queue.splice(from, 1);
+  queue.splice(to, 0, item);
+  renderQueue();
+}
+
+function focusGrip(pos){
+  const row = queueItems.children[pos];
+  if (row) row.querySelector(".songrow-grip").focus();
+}
+
+function startDrag(e, li){
+  if (e.pointerType === "mouse" && e.button !== 0) return;
+  e.preventDefault();
+
+  const handle = e.currentTarget;
+  handle.setPointerCapture(e.pointerId);
+
+  const rows = Array.from(queueItems.children);
+  const from = rows.indexOf(li);
+  const h = li.offsetHeight;
+  const startY = e.clientY;
+  let to = from;
+
+  li.classList.add("is-dragging");
+  rows.forEach(r => { if (r !== li) r.classList.add("is-shifting"); });
+
+  const onMove = ev => {
+    const dy = Math.max(-from * h, Math.min((rows.length - 1 - from) * h, ev.clientY - startY));
+    li.style.transform = "translateY(" + dy + "px)";
+    to = Math.max(0, Math.min(rows.length - 1, from + Math.round(dy / h)));
+
+    rows.forEach((r, k) => {
+      if (r === li) return;
+      let shift = 0;
+      if (from < to && k > from && k <= to) shift = -h;
+      else if (from > to && k < from && k >= to) shift = h;
+      r.style.transform = shift ? "translateY(" + shift + "px)" : "";
+    });
+  };
+
+  const end = ev => {
+    handle.removeEventListener("pointermove", onMove);
+    handle.removeEventListener("pointerup", end);
+    handle.removeEventListener("pointercancel", end);
+    if (ev.type === "pointerup" && to !== from) moveInQueue(from, to);
+    else renderQueue();
+  };
+
+  handle.addEventListener("pointermove", onMove);
+  handle.addEventListener("pointerup", end);
+  handle.addEventListener("pointercancel", end);
+}
+
+function renderQueue(){
+  queueNow.replaceChildren();
+  const nowLi = document.createElement("li");
+  nowLi.className = "songrow is-current";
+  nowLi.appendChild(songText(songs[current]));
+  queueNow.appendChild(nowLi);
+
+  queueItems.replaceChildren();
+  queue.forEach((songIndex, pos) => {
+    const s = songs[songIndex];
+    const li = document.createElement("li");
+    li.className = "songrow";
+
+    const main = document.createElement("div");
+    main.className = "songrow-main";
+
+    const grip = document.createElement("button");
+    grip.type = "button";
+    grip.className = "songrow-grip";
+    grip.innerHTML = GRIP_ICON;
+    grip.setAttribute("aria-label", "Reorder " + s.title + ". Drag, or use the up and down arrow keys.");
+    grip.addEventListener("pointerdown", e => startDrag(e, li));
+    grip.addEventListener("keydown", e => {
+      if (e.key === "ArrowUp" && pos > 0) {
+        e.preventDefault();
+        moveInQueue(pos, pos - 1);
+        focusGrip(pos - 1);
+      } else if (e.key === "ArrowDown" && pos < queue.length - 1) {
+        e.preventDefault();
+        moveInQueue(pos, pos + 1);
+        focusGrip(pos + 1);
+      }
+    });
+
+    main.append(grip, songText(s));
+
+    const actions = document.createElement("div");
+    actions.className = "songrow-actions";
+
+    const play = document.createElement("button");
+    play.type = "button";
+    play.className = "songrow-play";
+    play.textContent = "PLAY";
+    play.setAttribute("aria-label", "Play " + s.title + " now");
+    play.addEventListener("click", () => playFromQueue(pos));
+
+    const remove = document.createElement("button");
+    remove.type = "button";
+    remove.className = "songrow-remove";
+    remove.innerHTML = X_ICON;
+    remove.setAttribute("aria-label", "Remove " + s.title + " from queue");
+    remove.addEventListener("click", () => removeFromQueue(pos));
+
+    actions.append(play, remove);
+    li.append(main, actions);
+    queueItems.appendChild(li);
+  });
+
+  queueEmpty.hidden = queue.length > 0;
+  clearQueueBtn.disabled = queue.length === 0;
+  queueBadge.textContent = queue.length;
+  queueBadge.hidden = queue.length === 0;
+  openQueueBtn.setAttribute("aria-label", queue.length ? "Queue (" + queue.length + " songs)" : "Queue");
+  updateAddButtons();
+}
+
+document.getElementById("openSongList").addEventListener("click", () => dlg.showModal());
+document.getElementById("closeSongList").addEventListener("click", () => dlg.close());
+dlg.addEventListener("click", e => { if (e.target === dlg) dlg.close(); });
+
+openQueueBtn.addEventListener("click", () => queueDlg.showModal());
+document.getElementById("closeQueue").addEventListener("click", () => queueDlg.close());
+queueDlg.addEventListener("click", e => { if (e.target === queueDlg) queueDlg.close(); });
+clearQueueBtn.addEventListener("click", clearQueue);
+
+document.getElementById("listenNow").addEventListener("click", () => {
+  let i = current;
+  if (songs.length > 1) {
+    while (i === current) i = Math.floor(Math.random() * songs.length);
+  }
+  setSong(i, true);
+});
+
+document.getElementById("btnShuffle").addEventListener("click", () => {
+  setSong(Math.floor(Math.random() * songs.length), true);
+});
+document.getElementById("btnPrev").addEventListener("click", () => setSong(current - 1, playing));
+document.getElementById("btnNext").addEventListener("click", () => {
+  if (queue.length) setSong(queue.shift(), playing);
+  else setSong(current + 1, playing);
+});
+btnPlay.addEventListener("click", () => setPlaying(!playing));
+
+nowCover.addEventListener("error", () => { nowCover.style.visibility = "hidden"; });
+nowCover.addEventListener("load", () => { nowCover.style.visibility = "visible"; });
+
+const shareForm = document.getElementById("shareForm");
+const shareInput = document.getElementById("shareInput");
+shareForm.addEventListener("submit", e => {
+  e.preventDefault();
+  shareInput.value = "";
+});
+
+buildList();
+setSong(0, false);
+</script>
+
 </body>
 </html>
