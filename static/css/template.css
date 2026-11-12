@@ -237,17 +237,34 @@ main{
   left:43.2%;
   top:17.4%;
   width:46.3%;
+  height:14cqw;
+  overflow:hidden;
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
   text-align:center;
 }
 .song{
   font-weight:800;
-  font-size:3.9cqw;
+  font-size:3.4cqw;
   line-height:1.1;
+  overflow-wrap:anywhere;
+  display:-webkit-box;
+  -webkit-box-orient:vertical;
+  -webkit-line-clamp:2;
+  line-clamp:2;
+  overflow:hidden;
 }
 .artist{
-  font-size:2.8cqw;
+  font-size:2.4cqw;
   line-height:1.2;
   min-height:1.2em;
+  overflow-wrap:anywhere;
+  display:-webkit-box;
+  -webkit-box-orient:vertical;
+  -webkit-line-clamp:2;
+  line-clamp:2;
+  overflow:hidden;
 }
 .progress{
   left:43.2%;
@@ -696,3 +713,34 @@ button.tile{
 .logo:focus-visible{outline:none}
 
 .footer-logo{display:block;height:48px;width:auto;margin:0 auto .4rem}
+
+/* clickable / draggable progress bar */
+.progress{cursor:pointer;touch-action:none}
+.progress::before{ /* bigger invisible hit area around the thin line */
+  content:"";
+  position:absolute;
+  left:0;right:0;
+  top:-1.8cqw;bottom:-1.8cqw;
+}
+.progress:focus-visible{outline:2px solid var(--teal);outline-offset:.8cqw}
+.knob{pointer-events:none}
+
+/* repeat on state */
+.ctl[aria-pressed="true"]{color:var(--teal)}
+
+/* volume popup */
+.vol{position:relative;width:3.6cqw;height:3.6cqw}
+.vol .ctl{width:100%;height:100%}
+.vol-slider{
+  position:absolute;
+  right:0;
+  bottom:calc(100% + 1.2cqw);
+  width:18cqw;
+  z-index:3;
+  padding:.8cqw 1.2cqw;
+  background:rgba(0,0,0,.85);
+  border-radius:999px;
+  accent-color:var(--teal);
+  cursor:pointer;
+}
+.vol-slider[hidden]{display:none}

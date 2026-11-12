@@ -143,3 +143,6 @@
 
 ### ALPHA v0.16.1
 - Added release dates and background info per song
+
+### ALPHA v0.17.0
+- Fixed home.html and added songplaying to home.html

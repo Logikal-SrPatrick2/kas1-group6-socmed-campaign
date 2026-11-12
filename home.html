@@ -82,7 +82,7 @@
               <p class="artist" id="nowArtist"></p>
             </div>
 
-            <div class="progress" role="progressbar" aria-label="Song progress" aria-valuemin="0" aria-valuemax="100" aria-valuenow="11">
+            <div class="progress" role="progressbar" tabindex="0" aria-label="Song progress" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0">
               <span class="knob"></span>
             </div>
 
@@ -99,12 +99,15 @@
               <button type="button" class="ctl" aria-label="Next" id="btnNext">
                 <svg viewBox="0 0 24 24" fill="currentColor" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 4l10 8-10 8z"/><path d="M19 5v14" fill="none" stroke-width="3"/></svg>
               </button>
-              <button type="button" class="ctl" aria-label="Repeat">
+              <button type="button" class="ctl" aria-label="Repeat" id="btnRepeat" aria-pressed="false">
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="m17 2 4 4-4 4"/><path d="M3 11v-1a4 4 0 0 1 4-4h14"/><path d="m7 22-4-4 4-4"/><path d="M21 13v1a4 4 0 0 1-4 4H3"/></svg>
               </button>
-              <button type="button" class="ctl" aria-label="Volume">
-                <svg viewBox="0 0 24 24" fill="currentColor" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M11 5 6 9H2v6h4l5 4z"/><path d="M15.5 8.5a5 5 0 0 1 0 7M19 5a10 10 0 0 1 0 14" fill="none"/></svg>
-              </button>
+              <div class="vol">
+                <input class="vol-slider" id="volSlider" type="range" min="0" max="100" value="100" aria-label="Volume" hidden>
+                <button type="button" class="ctl" aria-label="Volume" id="btnVolume" aria-expanded="false">
+                  <svg viewBox="0 0 24 24" fill="currentColor" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M11 5 6 9H2v6h4l5 4z"/><path id="volWaves" d="M15.5 8.5a5 5 0 0 1 0 7M19 5a10 10 0 0 1 0 14" fill="none"/></svg>
+                </button>
+              </div>
             </div>
           </div>
         </section>
@@ -169,12 +172,12 @@
 <script>
 const COVER_DIR = "./static/img/";
 const songs = [
-  { title: "Masagana 99",           artist: "",                 cover: "Masagana1.png" },
-  { title: "Pasakalye sa 'Oy Utol", artist: "Heber Bartolome",  cover: "Oy Utol1.png" },
-  { title: "Saranggola ni Pepe",    artist: "Celeste Legaspi",  cover: "Saranggola ni Pepe1.png" },
-  { title: "Bagong Pagsilang",      artist: "",                 cover: "BagongPagsilang1.png" },
-  { title: "Halina",                artist: "Jess Santiago",    cover: "Halina1.png" },
-  { title: "Martsa ng Bayan",       artist: "Jess Santiago",    cover: "Martsa ng Bayan1.png" }
+  { title: "Masagana 99",           artist: "Levi Celerio | Felipe Padilla de Leon",              cover: "Masagana1.png",           audio: "./static/audio/Masagana-99 - Theme Song.mp3" },
+  { title: "Oy Utol, Buto’t Balat Ka Na’y Natutulog Ka Pa", artist: "Heber Bartolome",            cover: "Oy Utol1.png",            audio: "./static/audio/Oy Utol, Buto't Balat Ka Na'y Natutulog Ka Pa.mp3" },
+  { title: "Saranggola ni Pepe",    artist: "Celeste Legaspi",                                    cover: "Saranggola ni Pepe1.png", audio: "./static/audio/Saranggola Ni Pepe.mp3" },
+  { title: "Bagong Pagsilang",      artist: "Gene Generoso | Emil Mijares | The Entrolezos",      cover: "BagongPagsilang1.png",    audio: "./static/audio/Bagong Pagsilang.mp3" },
+  { title: "Halina",                artist: "Jess Santiago",                                      cover: "Halina1.png",             audio: "./static/audio/Halina.mp3" },
+  { title: "Martsa ng Bayan",       artist: "Jess Santiago",                                      cover: "Martsa ng Bayan1.png",    audio: "./static/audio/Martsa ng Bayan.mp3" }
 ];
 
 const dlg = document.getElementById("songList");
@@ -193,6 +196,14 @@ const queueBadge = document.getElementById("queueBadge");
 const openQueueBtn = document.getElementById("openQueue");
 const clearQueueBtn = document.getElementById("clearQueue");
 
+const progressBar = document.querySelector(".progress");
+const knob = document.querySelector(".progress .knob");
+
+const btnRepeat = document.getElementById("btnRepeat");
+const btnVolume = document.getElementById("btnVolume");
+const volSlider = document.getElementById("volSlider");
+const volWaves = document.getElementById("volWaves");
+
 const PLAY_PATH = "M8 5v14l11-7z";
 const PAUSE_PATH = "M7 5h4v14H7zM13 5h4v14h-4z";
 const X_ICON = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round"><path d="M5 5l14 14M19 5 5 19"/></svg>';
@@ -200,15 +211,27 @@ const GRIP_ICON = '<svg viewBox="0 0 24 24" fill="currentColor"><circle cx="9" c
 
 let current = 0;
 let playing = false;
+let seeking = false;
 const queue = [];
 const addBtns = [];
+const audio = new Audio();
 
 function coverSrc(song){ return COVER_DIR + encodeURI(song.cover); }
+function audioSrc(song){ return song.audio ? encodeURI(song.audio) : ""; }
+
+function setProgress(pct){
+  progressBar.setAttribute("aria-valuenow", Math.round(pct));
+  if (knob) knob.style.left = pct + "%";
+}
 
 function setPlaying(state){
   playing = state;
   playIcon.setAttribute("d", playing ? PAUSE_PATH : PLAY_PATH);
   btnPlay.setAttribute("aria-label", playing ? "Pause" : "Play");
+
+  if (!audio.getAttribute("src")) return; // no audio file: icon only
+  if (playing) audio.play().catch(() => setPlaying(false));
+  else audio.pause();
 }
 
 function setSong(i, autoplay){
@@ -217,10 +240,24 @@ function setSong(i, autoplay){
   nowCover.src = coverSrc(s);
   nowCover.alt = s.title + " cover";
   nowTitle.textContent = s.title;
+  nowTitle.title = s.title;
   nowArtist.textContent = s.artist;
+  nowArtist.title = s.artist;
+
+  audio.pause();
+  const src = audioSrc(s);
+  if (src) audio.src = src;
+  else { audio.removeAttribute("src"); audio.load(); }
+  setProgress(0);
+
   if (autoplay) setPlaying(true);
   markCurrent();
   renderQueue();
+}
+
+function goNext(autoplay){
+  if (queue.length) setSong(queue.shift(), autoplay);
+  else setSong(current + 1, autoplay);
 }
 
 function markCurrent(){
@@ -445,11 +482,74 @@ document.getElementById("btnShuffle").addEventListener("click", () => {
   setSong(Math.floor(Math.random() * songs.length), true);
 });
 document.getElementById("btnPrev").addEventListener("click", () => setSong(current - 1, playing));
-document.getElementById("btnNext").addEventListener("click", () => {
-  if (queue.length) setSong(queue.shift(), playing);
-  else setSong(current + 1, playing);
-});
+document.getElementById("btnNext").addEventListener("click", () => goNext(playing));
 btnPlay.addEventListener("click", () => setPlaying(!playing));
+
+// ---------- progress: click / drag / keyboard to seek ----------
+function seekFromEvent(e){
+  if (!isFinite(audio.duration) || !audio.duration) return;
+  const r = progressBar.getBoundingClientRect();
+  const ratio = Math.max(0, Math.min(1, (e.clientX - r.left) / r.width));
+  audio.currentTime = ratio * audio.duration;
+  setProgress(ratio * 100);
+}
+
+progressBar.addEventListener("pointerdown", e => {
+  if (e.pointerType === "mouse" && e.button !== 0) return;
+  seeking = true;
+  progressBar.setPointerCapture(e.pointerId);
+  seekFromEvent(e);
+});
+progressBar.addEventListener("pointermove", e => { if (seeking) seekFromEvent(e); });
+const endSeek = () => { seeking = false; };
+progressBar.addEventListener("pointerup", endSeek);
+progressBar.addEventListener("pointercancel", endSeek);
+
+progressBar.addEventListener("keydown", e => {
+  if (!isFinite(audio.duration) || !audio.duration) return;
+  if (e.key === "ArrowRight") {
+    e.preventDefault();
+    audio.currentTime = Math.min(audio.duration, audio.currentTime + 5);
+  } else if (e.key === "ArrowLeft") {
+    e.preventDefault();
+    audio.currentTime = Math.max(0, audio.currentTime - 5);
+  }
+});
+
+audio.addEventListener("timeupdate", () => {
+  if (!seeking && audio.duration) setProgress((audio.currentTime / audio.duration) * 100);
+});
+audio.addEventListener("ended", () => goNext(true));
+
+// ---------- repeat (loops the current song) ----------
+btnRepeat.addEventListener("click", () => {
+  audio.loop = !audio.loop;
+  btnRepeat.setAttribute("aria-pressed", String(audio.loop));
+});
+
+// ---------- volume ----------
+function updateVolumeUI(){
+  const muted = audio.volume === 0;
+  volWaves.style.display = muted ? "none" : "";
+  btnVolume.setAttribute("aria-label", muted ? "Volume (muted)" : "Volume");
+}
+
+function setVolumeOpen(open){
+  volSlider.hidden = !open;
+  btnVolume.setAttribute("aria-expanded", String(open));
+}
+
+btnVolume.addEventListener("click", () => setVolumeOpen(volSlider.hidden));
+volSlider.addEventListener("input", () => {
+  audio.volume = volSlider.value / 100;
+  updateVolumeUI();
+});
+document.addEventListener("click", e => {
+  if (!volSlider.hidden && !e.target.closest(".vol")) setVolumeOpen(false);
+});
+document.addEventListener("keydown", e => {
+  if (e.key === "Escape" && !volSlider.hidden) setVolumeOpen(false);
+});
 
 nowCover.addEventListener("error", () => { nowCover.style.visibility = "hidden"; });
 nowCover.addEventListener("load", () => { nowCover.style.visibility = "visible"; });
@@ -463,6 +563,7 @@ shareForm.addEventListener("submit", e => {
 
 buildList();
 setSong(0, false);
+updateVolumeUI();
 </script>
 
 </body>
