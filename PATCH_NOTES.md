@@ -129,3 +129,8 @@
 
 ### ALPHA v0.15.1
 - Remove pira pirasong balita from code
+
+### ALPHA v0.15.2
+- Removed settings
+- Updated navbar
+- Changed placeholder subtitle in home to "Historical Distortion in Music"
