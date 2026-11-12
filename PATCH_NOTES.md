@@ -170,3 +170,6 @@
 
 ### ALPHA v0.17.4
 - Resolved conflicts and removed search bars except for song playing
+
+### ALPHA v0.17.5
+- Added actual song playing
