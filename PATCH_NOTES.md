@@ -99,7 +99,13 @@
 - Made lyrics underlined when hovered
 
 ### PRE-ALPHA 0.12.1
+
 - Added lyrics to all songs except "Pira-pirasong Balita" by Paul Galang
 
 ### PRE-ALPHA 0.12.2
+
 - Simple fix for vinyl not spinning
+
+### PRE-ALPHA 0.12.3
+
+- Added songs to audio file except "Pira-pirasong Balita"
