@@ -398,10 +398,7 @@ main {
 }
 @media (prefers-reduced-motion: reduce) {
   .record {
-    animation: none;
-  }
-  .needle {
-    transition: none;
+    animation-duration: 6s;
   }
 }
 
