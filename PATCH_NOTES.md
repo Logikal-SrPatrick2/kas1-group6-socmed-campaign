@@ -117,3 +117,7 @@
 
 ### PRE-ALPHA 0.13.1
 - Fix logo not sizing properly
+
+### PRE-ALPHA 0.14
+- Fix song-player resizing handling
+- Added temporary share clear
