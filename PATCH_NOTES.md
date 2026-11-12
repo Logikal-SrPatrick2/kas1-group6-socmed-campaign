@@ -140,3 +140,6 @@
 ### ALPHA v0.16.0
 - Added about us html (incomplete info)
 - Added facts html (complete info)
+
+### ALPHA v0.16.1
+- Added release dates and background info per song

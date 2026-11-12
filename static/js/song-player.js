@@ -11,8 +11,8 @@ const songs = [
     title: "Bagong Pagsilang",
     artist: "Levi Celerio | Felipe Padilla de Leon",
     cover: "./static/img/BagongPagsilang1.png", // album cover image
-    released: "TBA", // release year
-    info: "Background information, themes and messages of the song go here.",
+    released: "1973", // release year
+    info: "Bagong Pagsilang demonstrates how the Marcos administration wanted Filipinos to perceive the New Society. Its lyrics establish the government's promise, not proof that the promise was fulfilled.",
     audio: "",
     lyrics: `May bagong silang.
 May bago nang buhay,
@@ -46,8 +46,8 @@ At ating itanghal: Bagong Lipunan!`, // e.g. "./static/audio/bagong-pagsilang.mp
     title: "Masagana-99 Theme Song",
     artist: "Gene Generoso | Emil Mijares | The Entrolezos",
     cover: "./static/img/Masagana1.png",
-    released: "TBA",
-    info: "Background information, themes and messages of the song go here.",
+    released: "1973",
+    info: "The Masagana-99 jingle is how the government promoted its agricultural policy. It shows how development was communicated through music, but it cannot independently establish the program's success. ",
     audio: "",
     lyrics: `Ang diwa ng bayanihan,
 lumaganap sa mga palayan.
@@ -73,8 +73,8 @@ Masagana-99!`,
     title: "Oy Utol, Buto’t Balat Ka Na’y Natutulog Ka Pa",
     artist: "Heber Bartolome",
     cover: "./static/img/Oy Utol1.png",
-    released: "TBA",
-    info: "Background information, themes and messages of the song go here.",
+    released: "1973",
+    info: "While the government-sponsored song announces a new and hopeful society, Bartolome asks listeners to look at the suffering that may exist behind the appearance of happiness. Its strongest historical contribution is documenting a contemporary artist's critical perspective on hunger, fear, repression, and public silence.",
     audio: "",
     lyrics: `Masdan niyo ang ating paligid
 Akala mo'y walang ligalig
@@ -121,8 +121,8 @@ Sumisigaw!`,
     title: "Saranggola ni Pepe",
     artist: "Celeste Legaspi",
     cover: "./static/img/Saranggola ni Pepe1.png",
-    released: "TBA",
-    info: "Background information, themes and messages of the song go here.",
+    released: "1977",
+    info: "Saranggola ni Pepe shows how political criticism could be communicated indirectly through metaphor. Using surreal and seemingly playful imagery. Its lyrics can be interpreted as a reflection on authoritarianism, silencing, and the suppression of individual expression. ",
     audio: "",
     lyrics: `Matayog ang lipad ng saranggola ni Pepe
 Matayog ang pangarap ng matandang bingi
@@ -164,8 +164,8 @@ Nay-`,
     title: "Halina",
     artist: "Jess Santiago",
     cover: "./static/img/Halina1.png",
-    released: "TBA",
-    info: "Background information, themes and messages of the song go here.",
+    released: "Late 1970s",
+    info: "Halina presents three different social experiences: labor exploitation, agrarian injustice, and urban displacement. It directly challenges the idea that the New Society's promise of progress was experienced equally by all Filipinos.",
     audio: "",
     lyrics: `Si Lina ay isang magandang dalaga
 Panggabi sa isang pabrika ng tela
@@ -199,20 +199,11 @@ Sina aling Maria.
 Halina, halina.`,
   },
   {
-    title: "Pira-pirasong Balita",
-    artist: "Paul Galang",
-    cover: "./static/img/Pirapirasong Balita1.png",
-    released: "TBA",
-    info: "Background information, themes and messages of the song go here.",
-    audio: "",
-    lyrics: "",
-  },
-  {
     title: "Martsa ng Bayan",
     artist: "Jess Santiago",
     cover: "./static/img/Martsa ng Bayan1.png",
-    released: "TBA",
-    info: "Background information, themes and messages of the song go here.",
+    released: "Early 1980s",
+    info: "The song was composed in the 1980s and became an anti-dictatorship protest anthem. It was performed during protest activities and was associated with calls for collective action involving different sectors and political visions against the Marcos regime. ",
     audio: "",
     lyrics: `Manggagawa at magsasaka,
 Kabataan at propesyonal,
